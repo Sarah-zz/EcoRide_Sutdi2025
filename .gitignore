@@ -1,4 +1,2 @@
- # Fichiers et dossiers à ignorer par Git
-    .env
-    /vendor/
-    npm-debug.log* # Fichiers de débogage NPM
+.env
+/vendor/
