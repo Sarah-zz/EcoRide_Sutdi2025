@@ -1,0 +1,62 @@
+
+services:
+  # Service de l'application PHP (PHP-FPM)
+  app:
+    build:
+      context: . # Utilise le Dockerfile dans le répertoire courant
+      dockerfile: Dockerfile
+    container_name: ecoride_app
+    volumes:
+      - .:/var/www/html # Monte le code source de l'hôte dans le conteneur
+    ports:
+      - "9000:9000" # Expose le port PHP-FPM (rarement accédé directement depuis l'hôte)
+    depends_on:
+      - db
+    environment:
+      MYSQL_HOST: db
+      MYSQL_DATABASE: ecoride_db
+      # MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+
+  # Service du serveur web (Nginx)
+  web:
+    image: nginx:alpine # Utilise une image Nginx officielle
+    container_name: ecoride_web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf # Monte la configuration Nginx personnalisée
+    depends_on:
+      - app
+
+  # Service de la base de données (MySQL)
+  db:
+    image: mysql:8.0
+    container_name: ecoride_db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ecoride_db
+      # MYSQL_USER: ${DB_USER}
+      # MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql # Volume persistant pour les données de la base de données
+
+  phpmyadmin:
+    image: phpmyadmin:5.2.2
+    container_name: ecoride_phpmyadmin
+    environment:
+      PMA_HOST: db # L'hôte de la base de données est le nom du service MySQL ('db')
+      PMA_USER: ${DB_USER}
+      PMA_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+
+
+# Volumes nommés pour la persistance des données
+volumes:
+  db_data: # Volume pour stocker les données MySQL

@@ -1,0 +1,18 @@
+{
+    "name": "patate/eco-ride",
+    "authors": [
+        {
+            "name": "Sarah-zz",
+            "email": "sarah.zogbi02@gmail.com"
+        }
+    ],
+    "autoload": {
+            "psr-4": {
+            "App\\": "src/",
+            "App\\Database\\": "src/Database/"
+            }
+        },
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

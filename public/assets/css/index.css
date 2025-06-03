@@ -1,0 +1,127 @@
+/* public/assets/css/index.css */
+/* Styles généraux pour l'ensemble du site EcoRide, y compris la section hero et le formulaire de recherche. */
+
+/* Palette de couleurs "Sable, Pastel & Écoresponsable" */
+:root {
+    --color-primary-green: #84B081;     /* Vert sauge doux et écoresponsable */
+    --color-secondary-blue: #A0D2EB;    /* Bleu ciel pastel et apaisant */
+    --color-dark-accent: #5A4B4B;      /* Marron terreux pour les accents foncés (boutons, titres) */
+    --color-light-bg: #F7F4E9;         /* Fond couleur sable très clair */
+    --color-text-dark: #444444;        /* Texte gris-brun doux pour lisibilité */
+    --color-text-light: #F8F8F8;       /* Texte blanc cassé pour contraste sur fonds sombres */
+    --color-navbar-bg: #607D8B;       /* Bleu-gris ardoise pour la barre de navigation et le footer */
+    --color-card-bg: rgba(255, 255, 255, 0.85); /* Fond de carte blanc légèrement transparent */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-light-bg); /* Couleur de fond sable */
+    color: var(--color-text-dark); /* Couleur de texte par défaut */
+}
+
+/* Styles pour la barre de navigation */
+.navbar {
+    background-color: var(--color-navbar-bg); /* Barre de navigation bleu-gris ardoise */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-height: 60px; /* Définir une hauteur minimale pour la navbar */
+    padding-top: 0;   /* Réduire le padding interne */
+    padding-bottom: 0; /* Réduire le padding interne */
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: var(--color-text-light) !important;
+    padding-top: 0;    /* Supprimer le padding par défaut de Bootstrap */
+    padding-bottom: 0; /* Supprimer le padding par défaut de Bootstrap */
+    height: 100%;      /* Permettre à la marque de prendre toute la hauteur disponible */
+    display: flex;     /* Utiliser flexbox pour aligner l'image */
+    align-items: center; /* Centrer l'image verticalement */
+}
+.navbar-brand img {
+    height: 100%; /* L'image prendra 100% de la hauteur de son parent (.navbar-brand) */
+    width: auto;  /* Conserver les proportions de l'image */
+    max-height: 50px; /* Limiter la hauteur maximale du logo pour ne pas qu'il soit trop grand */
+}
+.nav-link {
+    color: var(--color-text-light) !important;
+}
+
+.nav-link.active {
+    font-weight: bold;
+}
+
+/* Styles pour le pied de page */
+.footer {
+    background-color: var(--color-navbar-bg); /* Footer avec la même couleur que la navbar */
+    color: var(--color-text-light);
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 50px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.footer a {
+    color: var(--color-text-light);
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Styles généraux pour les sections de contenu */
+.container section {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* Styles pour la section hero */
+.hero-section {
+    /* Image de fond avec voitures et montagnes pour le côté écologique */
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../img/welcome.jpg) no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+/* Styles pour la carte du formulaire de recherche */
+.search-form-card {
+    background-color: var(--color-card-bg); /* Fond de carte blanc légèrement transparent */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Ombre adoucie */
+    max-width: 50vw; /* Taille du formulaire à 50% du viewport width */
+    margin: 50px auto 0 auto;
+}
+.search-form-card .form-control {
+    border-radius: 8px;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    color: var(--color-text-dark); /* Texte des inputs */
+}
+.search-form-card .form-label {
+    color: var(--color-text-dark); /* Labels des inputs */
+}
+.search-form-card .btn-primary {
+    background-color: var(--color-primary-green); /* Bouton vert sauge */
+    border-color: var(--color-primary-green);
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.search-form-card .btn-primary:hover {
+    background-color: var(--color-dark-accent); /* Marron terreux au survol */
+    border-color: var(--color-dark-accent);
+}

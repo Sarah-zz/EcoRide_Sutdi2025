@@ -1,0 +1,58 @@
+/* public/assets/css/admin.css */
+/* Styles spécifiques pour l'espace administrateur d'EcoRide. */
+
+.admin-section {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.admin-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.admin-card h3 {
+    color: var(--color-navbar-bg);
+    margin-bottom: 20px;
+}
+.admin-card .form-control {
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+.admin-card .btn-primary, .admin-card .btn-danger {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+.admin-card .btn-primary {
+    background-color: var(--color-primary-green);
+    border-color: var(--color-primary-green);
+}
+.admin-card .btn-primary:hover {
+    background-color: var(--color-dark-accent);
+    border-color: var(--color-dark-accent);
+}
+.admin-card .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.admin-card .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+.graph-placeholder {
+    background-color: #e9ecef;
+    border-radius: 10px;
+    height: 250px; /* Hauteur fixe pour le placeholder du graphique */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
