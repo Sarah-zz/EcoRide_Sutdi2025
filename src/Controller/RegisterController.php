@@ -1,17 +1,16 @@
 <?php
-// src/Controller/RegisterController.php
 // Ce contrôleur gère le traitement du formulaire d'inscription.
 
-namespace App\Controller; // <--- AJOUTER CETTE LIGNE
+namespace App\Controller;
 
-use App\Model\User; // <--- AJOUTER CETTE LIGNE pour utiliser la classe User
-use PDOException; // Ajouter si vous utilisez PDOException directement dans le try-catch
+use App\Model\User;
+use PDOException;
 
 $messageType = 'info';
 $messageTitle = '';
 $messageContent = [];
 
-// Fonction de validation du mot de passe (peut être déplacée dans une classe de validation)
+// Fonction de validation du mot de passe
 function isPasswordSecure($password) {
     if (strlen($password) < 8) return false;
     if (!preg_match('/[A-Z]/', $password)) return false;
@@ -31,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $confirmPassword = $_POST['confirm_password'] ?? '';
     $profilePicture = htmlspecialchars($_POST['profile_picture'] ?? 'default_profile.png');
 
-    // --- Validation des données du formulaire ---
     if (empty($pseudo)) {
         $messageContent[] = "Le pseudo est requis.";
     }
@@ -109,5 +107,4 @@ $_SESSION['form_message_type'] = $messageType;
 $_SESSION['form_message_title'] = $messageTitle;
 $_SESSION['form_message_content'] = $messageContent;
 
-header('Location: /signin'); // Redirige vers la page d'inscription (chemin absolu)
 exit();

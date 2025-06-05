@@ -1,5 +1,4 @@
 <?php
-// src/Controller/RechercheController.php
 // Ce contrôleur traite la recherche de trajets et redirige vers la page d'affichage des résultats.
 
 namespace App\Controller;
@@ -46,8 +45,6 @@ try {
     $results = $stmt->fetchAll();
 
 } catch (PDOException $e) {
-    // Pour une version débutant, on affiche l'erreur directement dans la session.
-    // En production, il est préférable de logger l'erreur (avec error_log()) et d'afficher un message générique.
     $_SESSION['error_message'] = "Une erreur est survenue lors de la recherche de trajets. Détails (pour le développement) : " . $e->getMessage();
 }
 

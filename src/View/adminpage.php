@@ -3,7 +3,7 @@
 // Cette page est l'espace administrateur.
 // Elle est incluse par public/index.php.
 
-$base_url = '/EcoRide'; // <--- IMPORTANT: Adaptez ce chemin si votre dossier de projet est différent
+$base_url = '/EcoRide';
 ?>
 
 <link rel="stylesheet" href="<?php echo $base_url; ?>/assets/css/admin.css">
