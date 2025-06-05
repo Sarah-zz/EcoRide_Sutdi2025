@@ -37,7 +37,7 @@ $formActionPath = '/backend/recherche';
         </div>
     </section>
 
-    <section class="container mt-5 py-5 bg-white rounded-lg shadow-sm">
+    <section class="container mt-5 py-5 bg-white bg-opacity-50 rounded-lg shadow-sm">
         <div class="row align-items-center mb-5">
             <div class="col-md-6">
                 <h2 class="mb-4 text-dark">Notre Mission : Un Covoiturage Responsable</h2>

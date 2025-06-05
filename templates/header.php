@@ -16,6 +16,7 @@ $base_url = ''; // <--- IMPORTANT: Laisser vide si ecoride.local pointe vers pub
     <link rel="stylesheet" href="<?php echo $base_url; ?>/assets/css/index.css">
     <link rel="stylesheet" href="<?php echo $base_url; ?>/assets/css/contact.css">
     <link rel="stylesheet" href="<?php echo $base_url; ?>/assets/css/admin.css">
+    <link rel="stylesheet" href="<?php echo $base_url; ?>/assets/css/signin.css">
 </head>
 <body>
 

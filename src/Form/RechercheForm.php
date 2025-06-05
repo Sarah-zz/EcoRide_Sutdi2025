@@ -1,7 +1,11 @@
 <?php
 // La variable $formActionPath doit être définie avant d'inclure ce fichier.
 // Elle contiendra le chemin d'URL vers le contrôleur de traitement (ex: /backend/recherche).
-$formActionPath = isset($formActionPath) ? htmlspecialchars($formActionPath) : '/backend/recherche'; // Valeur par défaut absolue
+// Cette URL est interceptée par le routeur (public/index.php) qui charge ensuite le contrôleur approprié.
+
+namespace App\Form;
+
+$formActionPath = isset($formActionPath) ? htmlspecialchars($formActionPath) : '/backend/recherche';
 ?>
 <div class="search-form-card">
     <h3 class="mb-4 text-dark">Trouvez votre prochain covoiturage</h3>
