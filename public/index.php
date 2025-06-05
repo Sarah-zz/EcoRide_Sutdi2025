@@ -14,11 +14,6 @@ $dotenv->load();
 // 1. Obtenir l'URI de la requête
 $requestUri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
-// Si votre projet est dans un sous-dossier (ex: http://localhost/EcoRide/),
-// la variable $requestUri contiendra 'EcoRide/covoiturage'.
-// Nous devons retirer ce préfixe pour que le routeur fonctionne.
-// Adaptez 'EcoRide' au nom exact de votre dossier de projet.
-// Si votre projet est directement à la racine (ex: http://localhost/), vous pouvez commenter cette section.
 $basePath = 'EcoRide'; // <--- IMPORTANT: Adaptez ce chemin si votre dossier de projet est différent
 if (strpos($requestUri, $basePath) === 0) {
     $requestUri = substr($requestUri, strlen($basePath));
@@ -26,7 +21,7 @@ if (strpos($requestUri, $basePath) === 0) {
 }
 
 
-// 2. Définir les routes
+// 2. les routes
 // Chaque clé est le "chemin" de l'URL (après le basePath), et la valeur est :
 // - Pour les Vues : le chemin complet du fichier PHP de la Vue.
 // - Pour les Contrôleurs : le nom complet de la classe du Contrôleur (avec son namespace).
@@ -42,7 +37,6 @@ $routes = [
     'backend/recherche' => 'App\\Controller\\RechercheController', // Nom complet de la classe du contrôleur
     'backend/register' => 'App\\Controller\\RegisterController',
     'backend/contact_process' => 'App\\Controller\\ContactController',
-    // Ajoutez d'autres routes ici
 ];
 
 // 3. Dispatcher la requête

@@ -57,6 +57,6 @@ services:
       - db
 
 
-# Volumes nommés pour la persistance des données
+# Volumes nommés pour la persistance des données / utilité pour la sécurité (live Docker avec Nathan)
 volumes:
   db_data: # Volume pour stocker les données MySQL

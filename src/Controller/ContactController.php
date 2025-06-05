@@ -1,8 +1,7 @@
 <?php
-// src/Controller/ContactController.php
 // Ce contrôleur gère le traitement du formulaire de contact.
 
-namespace App\Controller; // <--- AJOUTER CETTE LIGNE
+namespace App\Controller;
 
 // Note: DbConnection n'est pas directement utilisé ici, mais serait pour stocker les messages.
 // Pour l'instant, on simule juste l'envoi.
@@ -26,13 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $messageTitle = 'Erreur d\'envoi :';
         $messageContent[] = "L'adresse email n'est pas valide.";
     } else {
-        // Ici, vous implémenteriez la logique d'envoi de l'email ou de stockage en base de données.
-        // Pour un débutant, nous allons juste simuler le succès.
+        // Prchaine étape : implémenter logique d'envoi de l'email ou de stockage en base de données.
+        // Simulation du succès
         $messageType = 'success';
         $messageTitle = 'Message envoyé !';
         $messageContent[] = "Merci <strong>" . $name . "</strong>, votre message a été envoyé avec succès.";
         $messageContent[] = "Nous vous répondrons à l'adresse <strong>" . $email . "</strong> dans les plus brefs délais.";
-        // Optionnel: Stocker le message en base de données via un modèle Contact ou un service
     }
 } else {
     $messageType = 'info';
@@ -45,5 +43,5 @@ $_SESSION['contact_form_message_type'] = $messageType;
 $_SESSION['contact_form_message_title'] = $messageTitle;
 $_SESSION['contact_form_message_content'] = $messageContent;
 
-header('Location: /contact'); // Redirige vers la page de contact (chemin absolu)
+header('Location: /contact'); // Redirige vers la page de contact
 exit();

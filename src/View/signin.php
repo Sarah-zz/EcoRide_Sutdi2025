@@ -16,42 +16,6 @@ unset($_SESSION['form_message_content']);
 $base_url = '/EcoRide'; // <--- IMPORTANT: Adaptez ce chemin si votre dossier de projet est différent
 ?>
 
-<style>
-    /* Styles spécifiques pour la page d'inscription */
-    .registration-section {
-        background-color: #ffffff;
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 40px;
-        margin-top: 50px;
-        margin-bottom: 50px;
-        max-width: 600px; /* Limite la largeur du formulaire */
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .registration-section .form-control {
-        border-radius: 8px;
-        padding: 12px 15px;
-        border: 1px solid #ced4da;
-    }
-    .registration-section .btn-primary {
-        background-color: var(--color-primary-green); /* Utilise la couleur verte écologique */
-        border-color: var(--color-primary-green);
-        padding: 12px 30px;
-        border-radius: 8px;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-    }
-    .registration-section .btn-primary:hover {
-        background-color: var(--color-dark-accent); /* Vert plus foncé au survol */
-        border-color: var(--color-dark-accent);
-    }
-    /* Styles pour les messages d'erreur/succès */
-    .alert-success { border-radius: 8px; }
-    .alert-danger { border-radius: 8px; }
-    .alert-info { border-radius: 8px; }
-</style>
-
 <div class="container">
     <section class="registration-section">
         <h1 class="text-center mb-4">Rejoignez la communauté EcoRide !</h1>
