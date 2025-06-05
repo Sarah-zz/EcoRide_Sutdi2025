@@ -49,7 +49,7 @@ $formActionPath = '/backend/recherche';
                 </p>
             </div>
             <div class="col-md-6 text-center">
-                <img src="/assets/img/voiture_verte.jpg" alt="[Image of Green Car on Road]" class="img-fluid rounded-3 shadow-sm">
+                <img src="/assets/img/car_on_the_road.jpg" alt="Voiture sur une route" class="img-fluid rounded-3 shadow-sm">
             </div>
         </div>
 
@@ -64,7 +64,7 @@ $formActionPath = '/backend/recherche';
                 </p>
             </div>
             <div class="col-md-6 text-center">
-                <img src="/assets/img/covoiturage_personnes.jpg" alt="[Image of People Carpooling]" class="img-fluid rounded-3 shadow-sm">
+                <img src="/assets/img/covoiturage_personnes.jpg" alt="Personnes qui covoiturent" class="img-fluid rounded-3 shadow-sm">
             </div>
         </div>
     </section>

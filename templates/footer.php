@@ -8,8 +8,7 @@ $base_url = ''; // <--- IMPORTANT: Laisser vide si ecoride.local pointe vers pub
             <p>&copy; 2025 EcoRide. Tous droits réservés.</p>
             <p>Contactez-nous : <a href="mailto:contact@ecoride.fr" class="text-white">contact@ecoride.fr</a></p>
             <p>
-                <a href="<?php echo $base_url; ?>/mentions-legales" class="text-white me-3">Mentions Légales</a>
-                <a href="<?php echo $base_url; ?>/confidentialite" class="text-white me-3">Confidentialité</a>
+                <a href="<?php echo $base_url; ?>/mentionslegales" class="text-white me-3">Mentions Légales</a>
                 <a href="<?php echo $base_url; ?>/contact" class="text-white">Contact</a>
             </p>
         </div>

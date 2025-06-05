@@ -33,6 +33,7 @@ $routes = [
     'login' => __DIR__ . '/../src/View/login.php', // Page de connexion
     'contact' => __DIR__ . '/../src/View/contact.php', // Page de contact
     'admin' => __DIR__ . '/../src/View/adminpage.php', // Page administrateur
+    'mentionslegales' => __DIR__ . '/../src/View/mentionslegales.php',
     // Routes pour les traitements (Contrôleurs)
     'backend/recherche' => 'App\\Controller\\RechercheController', // Nom complet de la classe du contrôleur
     'backend/register' => 'App\\Controller\\RegisterController',
@@ -78,7 +79,6 @@ if ($requestedResource) {
         }
     }
 } else {
-    // Si aucune route n'a été trouvée pour l'URI demandée
     http_response_code(404);
     include __DIR__ . '/../src/View/404.php'; // Assurez-vous d'avoir une page 404.php
 }
