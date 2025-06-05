@@ -1,8 +1,7 @@
 <?php
-// src/Model/Trajet.php
 // Classe simple pour représenter un objet Trajet.
 
-namespace App\Model; // <--- AJOUTER CETTE LIGNE
+namespace App\Model;
 
 class Trajet
 {

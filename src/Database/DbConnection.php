@@ -1,5 +1,4 @@
 <?php
-// src/Database/DbConnection.php
 // Classe Singleton pour gérer la connexion à la base de données en utilisant des variables d'environnement.
 
 namespace App\Database;
@@ -17,8 +16,6 @@ class DbConnection
         // Le constructeur est privé pour empêcher l'instanciation directe.
         // La connexion PDO est initialisée ici.
         try {
-            // Récupère les variables d'environnement depuis $_ENV
-            // Assurez-vous que le fichier .env a été chargé auparavant (par public/index.php)
             $dsn = $_ENV['DB_DSN'];
             $user = $_ENV['DB_USER'];
             $password = $_ENV['DB_PASSWORD'];

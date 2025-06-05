@@ -6,7 +6,7 @@
     --color-primary-green: #84B081;     /* Vert sauge doux et écoresponsable */
     --color-secondary-blue: #A0D2EB;    /* Bleu ciel pastel et apaisant */
     --color-dark-accent: #5A4B4B;      /* Marron terreux pour les accents foncés (boutons, titres) */
-    --color-light-bg: #F7F4E9;         /* Fond couleur sable très clair */
+    --color-light-bg: #f8efe8;         /* Fond couleur sable très clair */
     --color-text-dark: #444444;        /* Texte gris-brun doux pour lisibilité */
     --color-text-light: #F8F8F8;       /* Texte blanc cassé pour contraste sur fonds sombres */
     --color-navbar-bg: #607D8B;       /* Bleu-gris ardoise pour la barre de navigation et le footer */
