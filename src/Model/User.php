@@ -40,7 +40,6 @@ class User
             $stmt->bindParam(':profile_picture', $profilePicture);
 
             return $stmt->execute();
-
         } catch (PDOException $e) {
             // Relancer l'exception pour que le contrôleur puisse la gérer
             throw $e;

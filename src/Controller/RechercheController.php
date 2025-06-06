@@ -12,7 +12,6 @@ $villeArrivee = $_GET['ville_arrivee'] ?? '';
 $dateTrajet = $_GET['date_trajet'] ?? '';
 $prixMax = $_GET['prix_max'] ?? '';
 
-// Obtient l'instance PDO directement via la méthode statique getPdo()
 $pdo = DbConnection::getPdo();
 
 $results = []; // Tableau pour stocker les résultats de la recherche
@@ -44,6 +43,10 @@ try {
     $stmt->execute($params);
     $results = $stmt->fetchAll();
 
+    if (empty($results) && (!empty($villeDepart) || !empty($villeArrivee))) {
+        echo "à developper : propositon de trajet";
+    }
+
 } catch (PDOException $e) {
     $_SESSION['error_message'] = "Une erreur est survenue lors de la recherche de trajets. Détails (pour le développement) : " . $e->getMessage();
 }
@@ -52,5 +55,4 @@ try {
 $_SESSION['recherche_results'] = $results;
 
 // Redirige vers la route /resultats du routeur (chemin absolu)
-header('Location: /resultats');
 exit();
