@@ -1,7 +1,6 @@
 <?php
-// templates/footer.php
 // Ce fichier contient le pied de page et la fin du document HTML.
-$base_url = ''; // <--- IMPORTANT: Laisser vide si ecoride.local pointe vers public/
+$base_url = '';
 ?>
     <footer class="footer">
         <div class="container">

@@ -4,8 +4,6 @@
 $title = 'Voyagez vert, voyagez malin avec EcoRide';
 $leadText = 'Trouvez ou proposez des covoiturages pour réduire votre empreinte carbone et vos coûts.';
 
-// Définition du chemin d'action pour le formulaire de recherche sur la page d'accueil
-// Le chemin est absolu depuis la racine du site, pointant vers le contrôleur de recherche.
 $formActionPath = '/backend/recherche';
 ?>
 

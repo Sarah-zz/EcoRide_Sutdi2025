@@ -16,19 +16,6 @@ class User
         $this->pdo = DbConnection::getPdo();
     }
 
-    /**
-     * Enregistre un nouvel utilisateur dans la base de données.
-     *
-     * @param string $pseudo Le pseudo de l'utilisateur.
-     * @param string $firstName Le prénom de l'utilisateur.
-     * @param string $lastName Le nom de famille de l'utilisateur.
-     * @param string $email L'adresse email de l'utilisateur.
-     * @param string $hashedPassword Le mot de passe haché de l'utilisateur.
-     * @param int $credits Le nombre de crédits initiaux.
-     * @param string $profilePicture Le chemin de la photo de profil.
-     * @return bool Vrai si l'enregistrement a réussi, faux sinon.
-     * @throws PDOException En cas d'erreur de base de données (ex: email/pseudo déjà utilisé).
-     */
     public function registerUser(
         string $pseudo,
         string $firstName,
@@ -60,13 +47,6 @@ class User
         }
     }
 
-    /**
-     * Vérifie si un email ou un pseudo existe déjà dans la base de données.
-     *
-     * @param string $email L'adresse email à vérifier.
-     * @param string $pseudo Le pseudo à vérifier.
-     * @return bool Vrai si l'email ou le pseudo existe déjà, faux sinon.
-     */
     public function emailOrPseudoExists(string $email, string $pseudo): bool
     {
         $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM users WHERE email = :email OR pseudo = :pseudo");

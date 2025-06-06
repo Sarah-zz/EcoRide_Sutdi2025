@@ -1,7 +1,6 @@
 <?php
 // src/View/resultatrecherche.php
 // Cette page est dédiée à l'affichage des résultats d'une recherche de covoiturage.
-// Elle est incluse par public/index.php.
 
 // Récupère les résultats de recherche stockés dans la session
 $rechercheResults = $_SESSION['recherche_results'] ?? [];

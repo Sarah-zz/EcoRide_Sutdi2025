@@ -1,7 +1,5 @@
 <?php
-// src/View/signin.php
 // Cette page contient le formulaire d'inscription pour les nouveaux utilisateurs.
-// Elle est incluse par public/index.php.
 
 // Récupère les messages du contrôleur RegisterController via la session
 $messageType = $_SESSION['form_message_type'] ?? '';
@@ -13,7 +11,7 @@ unset($_SESSION['form_message_type']);
 unset($_SESSION['form_message_title']);
 unset($_SESSION['form_message_content']);
 
-$base_url = '/EcoRide'; // <--- IMPORTANT: Adaptez ce chemin si votre dossier de projet est différent
+$base_url = '/EcoRide';
 ?>
 
 <div class="container">
