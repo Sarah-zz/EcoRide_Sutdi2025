@@ -1,9 +1,6 @@
 <?php
-// templates/header.php
-// Ce fichier contient le début du document HTML, les balises head, les liens CSS et la barre de navigation.
-// Tous les chemins sont maintenant absolus par rapport à la racine du site (http://ecoride.local/).
 // La variable $base_url est vide car le DocumentRoot pointe directement vers public/.
-$base_url = ''; // <--- IMPORTANT: Laisser vide si ecoride.local pointe vers public/
+$base_url = '';
 ?>
 <!DOCTYPE html>
 <html lang="fr">

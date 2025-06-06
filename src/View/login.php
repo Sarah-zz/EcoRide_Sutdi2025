@@ -1,9 +1,7 @@
 <?php
-// src/View/login.php
 // Cette page contient le formulaire de connexion.
-// Elle est incluse par public/index.php.
 
-$base_url = '/EcoRide'; // <--- IMPORTANT: Adaptez ce chemin si votre dossier de projet est différent
+$base_url = '/EcoRide';
 ?>
 
 <div class="container">

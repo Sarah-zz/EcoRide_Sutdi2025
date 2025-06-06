@@ -1,7 +1,5 @@
 <?php
-// src/View/adminpage.php
 // Cette page est l'espace administrateur.
-// Elle est incluse par public/index.php.
 
 $base_url = '/EcoRide';
 ?>
