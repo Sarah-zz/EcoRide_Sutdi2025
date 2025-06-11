@@ -17,7 +17,23 @@ $pdo = DbConnection::getPdo();
 $results = []; // Tableau pour stocker les résultats de la recherche
 
 try {
-    $sql = "SELECT id, ville_depart, ville_arrivee, date_trajet, heure_depart, prix, places_disponibles, conducteur_nom FROM trajets WHERE 1=1";
+    $sql = "SELECT
+                t.id,
+                t.ville_depart,
+                t.ville_arrivee,
+                t.date_trajet,
+                t.heure_depart,
+                t.heure_arrivee,
+                t.prix,
+                t.places_disponibles,
+                u.pseudo AS conducteur_pseudo,
+                u.profile_picture,
+                u.rating,
+                t.is_electric_car
+            FROM trajets t
+            JOIN users u ON t.conducteur_id = u.id
+            WHERE t.places_disponibles >= 1";
+
     $params = [];
 
     if (!empty($villeDepart)) {
@@ -37,7 +53,7 @@ try {
         $params[] = $prixMax;
     }
 
-    $sql .= " ORDER BY date_trajet, heure_depart";
+    $sql .= " ORDER BY t.date_trajet, t.heure_depart";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);
@@ -46,13 +62,18 @@ try {
     if (empty($results) && (!empty($villeDepart) || !empty($villeArrivee))) {
         echo "à developper : propositon de trajet";
     }
-
 } catch (PDOException $e) {
     $_SESSION['error_message'] = "Une erreur est survenue lors de la recherche de trajets. Détails (pour le développement) : " . $e->getMessage();
 }
 
-// Stocke les résultats dans la session pour qu'ils soient accessibles sur la page d'affichage
 $_SESSION['recherche_results'] = $results;
+$_SESSION['search_criteria'] = [
+    'ville_depart' => $villeDepart,
+    'ville_arrivee' => $villeArrivee,
+    'date_trajet' => $dateTrajet,
+    'prix_max' => $prixMax
+];
 
-// Redirige vers la route /resultats du routeur (chemin absolu)
+header('Location: ' . $base_url . '/resultats');
+
 exit();

@@ -12,7 +12,6 @@ class User
 
     public function __construct()
     {
-        // Récupère l'instance PDO de la classe DbConnection
         $this->pdo = DbConnection::getPdo();
     }
 
