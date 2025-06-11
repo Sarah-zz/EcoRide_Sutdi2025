@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Entity;
 
 class Trajet
 {
@@ -9,9 +9,10 @@ class Trajet
     public $ville_arrivee;
     public $date_trajet;
     public $heure_depart;
+    public $description;
     public $prix;
     public $places_disponibles;
-    public $conducteur_nom;
+    public $conducteur_pseudo;
 
     public function __construct(array $data)
     {

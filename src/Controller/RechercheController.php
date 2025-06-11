@@ -24,6 +24,7 @@ try {
                 t.date_trajet,
                 t.heure_depart,
                 t.heure_arrivee,
+                t.description,
                 t.prix,
                 t.places_disponibles,
                 u.pseudo AS conducteur_pseudo,

@@ -3,7 +3,7 @@
 
 namespace App\Controller;
 
-use App\Model\User;
+use App\Entity\User;
 use PDOException;
 
 $messageType = 'info';

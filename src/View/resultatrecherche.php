@@ -27,18 +27,17 @@ $errorMessage = $_SESSION['error_message'] ?? null;
             <div class="row">
                 <?php foreach ($rechercheResults as $trajet): ?>
                     <div class="col-md-6 mb-4">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary">
-                                    <?php echo htmlspecialchars($trajet['ville_depart']); ?> &rarr; <?php echo htmlspecialchars($trajet['ville_arrivee']); ?>
-                                </h5>
+                        <div class="card h-100 result-card">
+                                <h4 class="card-title">
+                                    <?php echo($trajet['ville_depart']); ?> &rarr; <?php echo htmlspecialchars($trajet['ville_arrivee']); ?>
+                                </h4>
                                 <p class="card-text mb-1"><strong>Date :</strong> <?php echo htmlspecialchars(date('d/m/Y', strtotime($trajet['date_trajet']))); ?></p>
                                 <p class="card-text mb-1"><strong>Heure de départ :</strong> <?php echo htmlspecialchars(date('H:i', strtotime($trajet['heure_depart']))); ?></p>
-                                <p class="card-text mb-1"><strong>Conducteur :</strong> <?php echo htmlspecialchars($trajet['conducteur_nom']); ?></p>
+                                <p class="card-text mb-1"><strong>Conducteur :</strong> <?php echo ($trajet['conducteur_pseudo']); ?></p>
+                                <p class="card-text mb-1"><strong>Descritpion :</strong> <?php echo ($trajet['description']); ?></p>
                                 <p class="card-text mb-1"><strong>Prix :</strong> <?php echo htmlspecialchars($trajet['prix']); ?> crédits</p>
                                 <p class="card-text mb-3"><strong>Places disponibles :</strong> <?php echo htmlspecialchars($trajet['places_disponibles']); ?></p>
-                                <a href="#" class="btn btn-sm btn-outline-primary">Voir les détails</a>
-                            </div>
+                                <a href="#" class="btn btn-outline-success">Voir les détails</a>
                         </div>
                     </div>
                 <?php endforeach; ?>

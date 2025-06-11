@@ -8,8 +8,7 @@
     ],
     "autoload": {
             "psr-4": {
-            "App\\": "src/",
-            "App\\Database\\": "src/Database/"
+            "App\\": "src/"
             }
         },
     "require": {

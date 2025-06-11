@@ -1,7 +1,7 @@
 <?php
 // Ce fichier contient la classe User, qui gère la logique métier et les interactions avec la base de données pour les utilisateurs.
 
-namespace App\Model;
+namespace App\Entity;
 
 use App\Database\DbConnection;
 use PDOException;
