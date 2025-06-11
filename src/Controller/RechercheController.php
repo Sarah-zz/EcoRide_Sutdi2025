@@ -59,9 +59,6 @@ try {
     $stmt->execute($params);
     $results = $stmt->fetchAll();
 
-    if (empty($results) && (!empty($villeDepart) || !empty($villeArrivee))) {
-        echo "à developper : propositon de trajet";
-    }
 } catch (PDOException $e) {
     $_SESSION['error_message'] = "Une erreur est survenue lors de la recherche de trajets. Détails (pour le développement) : " . $e->getMessage();
 }
