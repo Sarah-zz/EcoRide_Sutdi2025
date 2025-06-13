@@ -1,7 +1,4 @@
 <?php
-// La variable $formActionPath doit être définie avant d'inclure ce fichier.
-// Elle contiendra le chemin d'URL vers le contrôleur de traitement (ex: /backend/recherche).
-// Cette URL est interceptée par le routeur (public/index.php) qui charge ensuite le contrôleur approprié.
 
 namespace App\Form;
 
