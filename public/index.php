@@ -32,6 +32,7 @@ $routes = [
     'contact' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/contact.php'],
     'admin' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/adminpage.php'],
     'contact_reponse' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/contactanswer.php'],
+    'inscription_reussie' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/signinsuccess.php'],
     // Routes des contrôleurs (pour les traitements backend)
     'backend/recherche' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/RechercheController.php'],
     'backend/register' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/RegisterController.php'],
