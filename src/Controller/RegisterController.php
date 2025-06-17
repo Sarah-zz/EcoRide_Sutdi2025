@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $messageContent[] = "Cet email ou pseudo est déjà utilisé. Veuillez en choisir un autre.";
             } else {
                 $initialCredits = 20;
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
                 // Appelle la méthode du Modèle pour enregistrer l'utilisateur
                 $registrationSuccess = $userModel->registerUser(
@@ -106,5 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $_SESSION['form_message_type'] = $messageType;
 $_SESSION['form_message_title'] = $messageTitle;
 $_SESSION['form_message_content'] = $messageContent;
+
+header('Location: ' . $base_url . '/signin');
 
 exit();
