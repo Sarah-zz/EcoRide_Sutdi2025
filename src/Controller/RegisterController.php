@@ -3,7 +3,7 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
+use App\Repository\UserRepository;
 use PDOException;
 
 $messageType = 'info';
@@ -11,7 +11,8 @@ $messageTitle = '';
 $messageContent = [];
 
 // Fonction de validation du mot de passe
-function isPasswordSecure($password) {
+function isPasswordSecure($password)
+{
     if (strlen($password) < 8) return false;
     if (!preg_match('/[A-Z]/', $password)) return false;
     if (!preg_match('/[a-z]/', $password)) return false;
@@ -54,11 +55,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($messageContent)) {
-        $userModel = new User(); // Instancie le Modèle User (grâce au 'use' statement)
+        $userRepository = new UserRepository();
 
         try {
             // Vérifier si l'email ou le pseudo existe déjà
-            if ($userModel->emailOrPseudoExists($email, $pseudo)) {
+            if ($userRepository->emailOrPseudoExists($email, $pseudo)) {
                 $messageType = 'danger';
                 $messageTitle = 'Erreur(s) d\'inscription :';
                 $messageContent[] = "Cet email ou pseudo est déjà utilisé. Veuillez en choisir un autre.";
@@ -67,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
                 // Appelle la méthode du Modèle pour enregistrer l'utilisateur
-                $registrationSuccess = $userModel->registerUser(
+                $registrationSuccess = $userRepository->registerUser(
                     $pseudo,
                     $firstName,
                     $lastName,
@@ -102,7 +103,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $messageContent[] = "Ce fichier est destiné au traitement du formulaire d'inscription. Accédez-y via le formulaire.";
 }
 
-// Stocke les messages dans la session pour les afficher sur la page d'inscription
 $_SESSION['form_message_type'] = $messageType;
 $_SESSION['form_message_title'] = $messageTitle;
 $_SESSION['form_message_content'] = $messageContent;

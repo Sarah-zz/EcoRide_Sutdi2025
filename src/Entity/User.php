@@ -1,56 +1,155 @@
 <?php
-// Ce fichier contient la classe User, qui gère la logique métier et les interactions avec la base de données pour les utilisateurs.
 
 namespace App\Entity;
 
-use App\Database\DbConnection;
-use PDOException;
-
 class User
 {
-    private $pdo;
+    private ?int $id = null;
+    private string $pseudo;
+    private string $firstName;
+    private string $lastName;
+    private string $email;
+    private ?string $phone = null;
+    private string $password;
+    private int $credits = 0;
+    private string $profilePicture = 'default_profile.png';
+    private int $rating = 0;
 
-    public function __construct()
+
+    public function __construct(array $data = [])
     {
-        $this->pdo = DbConnection::getPdo();
+        if (isset($data['id']))
+            $this->setId($data['id']);
+
+        if (isset($data['pseudo']))
+            $this->setPseudo($data['pseudo']);
+
+        if (isset($data['first_name']))
+            $this->setFirstName($data['first_name']);
+
+        if (isset($data['last_name']))
+            $this->setLastName($data['last_name']);
+
+        if (isset($data['email']))
+            $this->setEmail($data['email']);
+
+        if (isset($data['phone']))
+            $this->setPhone($data['phone']);
+
+        if (isset($data['password']))
+            $this->setPassword($data['password']);
+
+        if (isset($data['credits']))
+            $this->setCredits($data['credits']);
+
+        if (isset($data['profile_picture']))
+            $this->setProfilePicture($data['profile_picture']);
+
+        if (isset($data['rating']))
+            $this->setRating($data['rating']);
     }
 
-    public function registerUser(
-        string $pseudo,
-        string $firstName,
-        string $lastName,
-        string $email,
-        string $hashedPassword,
-        int $credits,
-        string $profilePicture
-    ): bool {
-        try {
-            $stmt = $this->pdo->prepare("
-                INSERT INTO users (pseudo, first_name, last_name, email, password, credits, profile_picture)
-                VALUES (:pseudo, :first_name, :last_name, :email, :password, :credits, :profile_picture)
-            ");
-
-            $stmt->bindParam(':pseudo', $pseudo);
-            $stmt->bindParam(':first_name', $firstName);
-            $stmt->bindParam(':last_name', $lastName);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':password', $hashedPassword);
-            $stmt->bindParam(':credits', $credits);
-            $stmt->bindParam(':profile_picture', $profilePicture);
-
-            return $stmt->execute();
-        } catch (PDOException $e) {
-            // Relancer l'exception pour que le contrôleur puisse la gérer
-            throw $e;
-        }
+    // --- Getters ---
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
-    public function emailOrPseudoExists(string $email, string $pseudo): bool
+    public function getPseudo(): string
     {
-        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM users WHERE email = :email OR pseudo = :pseudo");
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':pseudo', $pseudo);
-        $stmt->execute();
-        return $stmt->fetchColumn() > 0;
+        return $this->pseudo;
+    }
+
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function getCredits(): int
+    {
+        return $this->credits;
+    }
+
+    public function getProfilePicture(): string
+    {
+        return $this->profilePicture;
+    }
+
+    public function getRating(): int
+    {
+        return $this->rating;
+    }
+
+
+
+    // --- Setters ---
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    public function setPseudo(string $pseudo): void
+    {
+        $this->pseudo = $pseudo;
+    }
+
+    public function setFirstName(string $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    public function setLastName(string $lastName): void
+    {
+        $this->lastName = $lastName;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    public function setPhone(?string $phone): void
+    {
+        $this->phone = $phone;
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
+    public function setCredits(int $credits): void
+    {
+        $this->credits = $credits;
+    }
+
+    public function setProfilePicture(string $profilePicture): void
+    {
+        $this->profilePicture = $profilePicture;
+    }
+
+    public function setRating(int $rating): void
+    {
+        $this->rating = $rating;
     }
 }
