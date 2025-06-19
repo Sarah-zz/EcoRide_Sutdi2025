@@ -101,7 +101,6 @@ class User
     }
 
 
-
     // --- Setters ---
     public function setId(int $id): void
     {
@@ -152,4 +151,5 @@ class User
     {
         $this->rating = $rating;
     }
+
 }

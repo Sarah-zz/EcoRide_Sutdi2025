@@ -44,8 +44,8 @@ class Trajet
         if (isset($data['places_disponibles'])) 
             $this->setPlacesDisponibles($data['places_disponibles']);
 
-        if (isset($data['is_electric_car'])) 
-            $this->setIsElectricCar((bool)$data['is_electric_car']);
+        if (isset($data['electric_car'])) 
+            $this->setIsElectricCar((bool)$data['electric_car']);
 
         if (isset($data['conducteur_pseudo'])) 
             $this->setConducteurPseudo($data['conducteur_pseudo']);
