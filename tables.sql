@@ -11,7 +11,7 @@ CREATE TABLE `users` (
     credits int DEFAULT '0',
     profile_picture varchar(255) DEFAULT 'default_profile.png',
     rating int DEFAULT '0',
-    role int DEFAUT '1',
+    role int DEFAULT '1'
 );
 
 CREATE TABLE `trajets` (
