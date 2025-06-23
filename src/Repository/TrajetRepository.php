@@ -33,7 +33,7 @@ class TrajetRepository
                         t.prix,
                         t.places_disponibles,
                         t.description,
-                        t.is_electric_car,
+                        t.electric_car,
                         u.pseudo AS conducteur_pseudo,
                         u.profile_picture,
                         u.rating
