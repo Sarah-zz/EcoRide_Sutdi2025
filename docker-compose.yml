@@ -3,7 +3,7 @@ services:
   # Service de l'application PHP (PHP-FPM)
   app:
     build:
-      context: . # Utilise le Dockerfile dans le répertoire courant
+      context: .
       dockerfile: Dockerfile
     container_name: ecoride_app
     volumes:
@@ -15,12 +15,12 @@ services:
       - mongodb
     environment:
       MYSQL_HOST: db
-      MYSQL_DATABASE: ecoride_db
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
       # MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MONGO_HOST: mongodb
       MONGO_PORT: 27017
-      MONGO_DATABASE: ecoride_mongodb
+      MONGO_DATABASE: ${MONGO_APP_DB}
       MONGO_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
 
@@ -44,7 +44,7 @@ services:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ecoride_db
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
       # MYSQL_USER: ${DB_USER}
       # MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
@@ -70,6 +70,7 @@ services:
     volumes:
       - mongodb_data:/data/db
     environment:
+      MONGO_INITDB_DATABASE: ${MONGO_APP_DB}
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
 
