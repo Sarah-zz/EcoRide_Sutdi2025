@@ -35,7 +35,7 @@ class TrajetRepository
                         t.description,
                         t.electric_car,
                         u.pseudo AS conducteur_pseudo,
-                        u.profile_picture,
+                        COALESCE(NULLIF(u.profile_picture, ''), 'default_profile.png') AS profile_picture,
                         u.rating
                     FROM trajets t
                     JOIN users u ON t.conducteur_id = u.id
