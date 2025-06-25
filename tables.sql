@@ -32,10 +32,6 @@ CREATE TABLE `trajets` (
         REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--------------
-
-
---------------------------------------
 CREATE TABLE vehicles (
 id INT AUTO_INCREMENT PRIMARY KEY,
 user_id INT NOT NULL,
