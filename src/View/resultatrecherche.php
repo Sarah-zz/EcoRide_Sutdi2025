@@ -10,16 +10,11 @@ unset($_SESSION['error_message']);
 ?>
 <div class="container my-5">
     <div class="row">
-        <!-- Colonne pour les filtres (bandeau latéral gauche) -->
             <section class="bg-white p-4 rounded-3 shadow-sm mb-4">
                 <h2 class="mb-4">Filtrer par :</h2>
                 <?php
-                // Définition de $formActionPath pour le formulaire de filtre
-                // Il doit pointer vers le même contrôleur de recherche.
                 $formActionPath = $base_url . '/backend/recherche';
-                // Inclusion du formulaire de filtres avancés.
-                // La variable $searchCriteria est disponible dans le scope pour pré-remplir le formulaire.
-                include __DIR__ . '/../Form/FilterForm.php'; // <--- CHANGEMENT ICI : Inclusion du nouveau fichier
+                include __DIR__ . '/../Form/FilterForm.php';
                 ?>
             </section>
         </div>

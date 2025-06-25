@@ -12,7 +12,7 @@ class Trajet
     private ?string $description = null;
     private float $prix;
     private int $placesDisponibles;
-    private bool $isElectricCar = false;
+    private bool $electricCar = false;
     private ?string $conducteurPseudo = null;
     private ?string $profilePicture = null;
     private ?int $rating = null;
@@ -100,7 +100,7 @@ class Trajet
 
     public function getIsElectricCar(): bool
     {
-        return $this->isElectricCar;
+        return $this->electricCar;
     }
 
     public function getConducteurPseudo(): ?string
@@ -160,9 +160,9 @@ class Trajet
         $this->placesDisponibles = $placesDisponibles;
     }
 
-    public function setIsElectricCar(bool $isElectricCar): void
+    public function setIsElectricCar(bool $electricCar): void
     {
-        $this->isElectricCar = $isElectricCar;
+        $this->electricCar = $electricCar;
     }
 
     public function setConducteurPseudo(?string $conducteurPseudo): void
