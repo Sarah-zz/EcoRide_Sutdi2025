@@ -8,7 +8,7 @@ $minRating = htmlspecialchars($searchCriteria['min_rating'] ?? '');
 $electricCar = (bool)($searchCriteria['electric_car'] ?? false);
 ?>
 
-<div class="container ">
+<div class="container">
     <form action="<?php echo $formActionPath; ?>" method="GET">
         <!-- Champs cachés pour conserver les critères de recherche de base -->
         <input type="hidden" name="ville_depart" value="<?php echo htmlspecialchars($searchCriteria['ville_depart'] ?? ''); ?>">

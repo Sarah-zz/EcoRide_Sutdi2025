@@ -61,7 +61,7 @@ class TrajetRepository
             }
 
             if ($electricCar) {
-                $sql .= " AND t.is_electric_car = TRUE";
+                $sql .= " AND t.electric_car = TRUE";
             }
             if (!empty($maxDuration) && is_numeric($maxDuration)) {
                 $sql .= " AND TIMEDIFF(t.heure_arrivee, t.heure_depart) <= SEC_TO_TIME(? * 3600)";
