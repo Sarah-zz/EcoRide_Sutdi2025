@@ -3,6 +3,13 @@
 namespace App\Form;
 
 $formActionPath = isset($formActionPath) ? htmlspecialchars($formActionPath) : '/backend/recherche';
+
+$searchCriteria = $_SESSION['search_criteria'] ?? [];
+$prixMax = htmlspecialchars($searchCriteria['prix_max'] ?? '');
+$maxDuration = htmlspecialchars($searchCriteria['max_duration'] ?? '');
+$minRating = htmlspecialchars($searchCriteria['min_rating'] ?? '');
+$electricCar = (bool)($searchCriteria['electric_car'] ?? false);
+
 ?>
 <div class="search-form-card text-center">
     <h3 class="mb-4 text-dark">Trouvez votre prochain covoiturage</h3>

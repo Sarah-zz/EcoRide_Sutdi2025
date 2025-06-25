@@ -19,6 +19,10 @@ class TrajetRepository
         string $villeDepart,
         string $villeArrivee,
         string $dateTrajet,
+        //ajout filtres
+        bool $electricCar,
+        ?string $maxDuration,
+        ?string $minRating
     ): array {
         $results = [];
 
@@ -54,6 +58,18 @@ class TrajetRepository
             if (!empty($dateTrajet)) {
                 $sql .= " AND t.date_trajet = ?";
                 $params[] = $dateTrajet;
+            }
+
+            if ($electricCar) {
+                $sql .= " AND t.is_electric_car = TRUE";
+            }
+            if (!empty($maxDuration) && is_numeric($maxDuration)) {
+                $sql .= " AND TIMEDIFF(t.heure_arrivee, t.heure_depart) <= SEC_TO_TIME(? * 3600)";
+                $params[] = $maxDuration;
+            }
+            if (!empty($minRating) && is_numeric($minRating) && $minRating >= 0) {
+                $sql .= " AND u.rating >= ?";
+                $params[] = $minRating;
             }
 
             $sql .= " ORDER BY t.date_trajet, t.heure_depart";

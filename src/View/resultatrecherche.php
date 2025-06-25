@@ -1,19 +1,36 @@
 <?php
 // Cette page est dédiée à l'affichage des résultats d'une recherche de covoiturage.
 
-// Récupère les résultats de recherche stockés dans la session
 $rechercheResults = $_SESSION['recherche_results'] ?? [];
-
 $errorMessage = $_SESSION['error_message'] ?? null;
-?>
+$searchCriteria = $_SESSION['search_criteria'] ?? [];
 
+unset($_SESSION['recherche_results']);
+unset($_SESSION['error_message']);
+?>
 <div class="container my-5">
+    <div class="row">
+        <!-- Colonne pour les filtres (bandeau latéral gauche) -->
+            <section class="bg-white p-4 rounded-3 shadow-sm mb-4">
+                <h2 class="mb-4">Filtrer par :</h2>
+                <?php
+                // Définition de $formActionPath pour le formulaire de filtre
+                // Il doit pointer vers le même contrôleur de recherche.
+                $formActionPath = $base_url . '/backend/recherche';
+                // Inclusion du formulaire de filtres avancés.
+                // La variable $searchCriteria est disponible dans le scope pour pré-remplir le formulaire.
+                include __DIR__ . '/../Form/FilterForm.php'; // <--- CHANGEMENT ICI : Inclusion du nouveau fichier
+                ?>
+            </section>
+        </div>
+
+<div class="col-md-8">
     <section class="p-4 rounded-3">
         <h1 class="text-center mb-4">Résultats de votre recherche</h1>
 
         <?php if ($errorMessage): ?>
             <div class="alert alert-danger text-center" role="alert">
-                <?php echo ($errorMessage); ?>
+                <?php echo htmlspecialchars($errorMessage); ?>
             </div>
         <?php endif; ?>
 
@@ -22,6 +39,7 @@ $errorMessage = $_SESSION['error_message'] ?? null;
             <div class="text-center mt-4">
                 <a href="/EcoRide/" class="btn btn-secondary">Retour à l'accueil pour une nouvelle recherche</a>
             </div>
+
         <?php else: ?>
             <p class="text-center mb-4">Voici les trajets disponibles qui correspondent à vos critères :</p>
             <div class="row">
@@ -54,13 +72,13 @@ $errorMessage = $_SESSION['error_message'] ?? null;
                             <p class="card-text mb-1"><strong>Prix :</strong> <?php echo htmlspecialchars($trajet['prix']); ?> crédits</p>
                             <p class="card-text mb-1"><strong>Places disponibles :</strong> <?php echo htmlspecialchars($trajet['places_disponibles']); ?></p>
                             <p class="mb-3">
-                                        <strong>Voiture électrique :</strong>
-                                        <?php if (isset($trajet['is_electric_car']) && $trajet['is_electric_car']): ?>
-                                            <span class="badge bg-success"><i class="bi bi-lightning-fill"></i> Oui</span>
-                                        <?php else: ?>
-                                            Non
-                                        <?php endif; ?>
-                                    </p>
+                                <strong>Voiture électrique :</strong>
+                                <?php if (isset($trajet['is_electric_car']) && $trajet['is_electric_car']): ?>
+                                    <span class="badge bg-success"><i class="bi bi-lightning-fill"></i> Oui</span>
+                                <?php else: ?>
+                                    Non
+                                <?php endif; ?>
+                            </p>
                             <a href="#" class="btn btn-outline-success">Voir les détails</a>
                         </div>
                     </div>
