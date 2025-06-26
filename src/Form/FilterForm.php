@@ -17,7 +17,7 @@ $electricCar = (bool)($searchCriteria['electric_car'] ?? false);
  <div class="row">
         <div class="col">
             <label for="prixMax" class="form-label text-dark">Prix max (crédits)</label>
-            <input type="number" class="form-control" id="prixMax" name="prix_max" placeholder="Ex: 15" min="0" step="1" value="<?php echo $prixMax; ?>">
+            <input type="number" class="form-control" id="prixMax" name="prix_max" placeholder="Ex: 15" min="0" value="<?php echo $prixMax; ?>">
         </div>
         <div class="col">
             <label for="maxDuration" class="form-label text-dark">Durée max (heures)</label>
@@ -29,7 +29,7 @@ $electricCar = (bool)($searchCriteria['electric_car'] ?? false);
         </div>
         <div class="col">
             <input class="form-check-input" type="checkbox" id="electricCar" name="electric_car" value="1" <?php echo $electricCar ? 'checked' : ''; ?>>
-            <label class="form-check-label text-dark" for="isElectricCar">Voiture électrique</label>
+            <label class="form-check-label text-dark" for="electricCar">Voiture électrique</label>
         </div>
         <div class="col">
             <button type="submit" class="btn btn-primary">Appliquer les filtres</button>

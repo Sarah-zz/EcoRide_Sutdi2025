@@ -52,11 +52,7 @@ unset($_SESSION['error_message']);
                                             <?php
                                             $rawRating = $trajet['rating'] ?? 0;
                                             $roundedRating = round($rawRating);
-                                            $starsHtml = '';
-                                            for ($i = 0; $i < 5; $i++) {
-                                                $starsHtml .= ($i < $roundedRating) ? '<i class="bi bi-star-fill text-warning"></i>' : '<i class="bi bi-star text-warning"></i>';
-                                            }
-                                            echo $starsHtml . ' (' . htmlspecialchars(number_format($rawRating, 1)) . ')';
+                                            echo 'Note : ' . htmlspecialchars(number_format($rawRating, 1)) . ')';
                                             ?>
                                         </p>
                                     </div>
@@ -68,8 +64,8 @@ unset($_SESSION['error_message']);
                                 <p class="card-text mb-1"><strong>Places disponibles :</strong> <?php echo htmlspecialchars($trajet['places_disponibles']); ?></p>
                                 <p class="mb-3">
                                     <strong>Voiture électrique :</strong>
-                                    <?php if (isset($trajet['is_electric_car']) && $trajet['is_electric_car']): ?>
-                                        <span class="badge bg-success"><i class="bi bi-lightning-fill"></i> Oui</span>
+                                    <?php if (isset($trajet['electric_car']) && $trajet['electric_car']): ?>
+                                        Oui
                                     <?php else: ?>
                                         Non
                                     <?php endif; ?>

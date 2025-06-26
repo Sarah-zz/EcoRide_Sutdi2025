@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Database\DbConnection;
 use App\Repository\TrajetRepository;
 use PDOException;
 
@@ -14,7 +15,7 @@ $dateTrajet = $_GET['date_trajet'] ?? '';
 $electricCar = isset($_GET['electric_car']) && $_GET['electric_car'] == '1';
 $maxDuration = $_GET['max_duration'] ?? '';
 $minRating = $_GET['min_rating'] ?? '';
-
+$prixMax = $_GET['prix_max'] ?? '';
 
 $results = [];
 
@@ -27,8 +28,11 @@ try {
         $dateTrajet,
         $electricCar,
         $maxDuration,
-        $minRating
+        $minRating,
+        $prixMax
     );
+
+    
 } catch (PDOException $e) {
     $_SESSION['error_message'] = "Une erreur est survenue lors de la recherche de trajets. Détails (pour le développement) : " . $e->getMessage();
 }
@@ -40,7 +44,8 @@ $_SESSION['search_criteria'] = [
     'date_trajet' => $dateTrajet,
     'electric_car' => $electricCar,
     'max_duration' => $maxDuration,
-    'min_rating' => $minRating
+    'min_rating' => $minRating,
+    'prix_max' => $prixMax,
 ];
 
 

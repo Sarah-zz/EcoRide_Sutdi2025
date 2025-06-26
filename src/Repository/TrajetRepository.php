@@ -22,7 +22,9 @@ class TrajetRepository
         //ajout filtres
         bool $electricCar,
         ?string $maxDuration,
-        ?string $minRating
+        ?string $minRating,
+        ?string $prixMax,
+
     ): array {
         $results = [];
 
@@ -70,6 +72,10 @@ class TrajetRepository
             if (!empty($minRating) && is_numeric($minRating) && $minRating >= 0) {
                 $sql .= " AND u.rating >= ?";
                 $params[] = $minRating;
+            }
+            if (!empty($prixMax) && is_numeric($prixMax)) {
+                $sql .= "AND t.prix <= ?";
+                $params[] = $prixMax;
             }
 
             $sql .= " ORDER BY t.date_trajet, t.heure_depart";

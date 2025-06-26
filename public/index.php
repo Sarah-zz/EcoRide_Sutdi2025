@@ -1,6 +1,7 @@
 <?php
 // public/index.php - Le Front Controller / Routeur
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start(); // Démarre la session pour toute l'application
 
 // Inclure l'autoloader de Composer au tout début
