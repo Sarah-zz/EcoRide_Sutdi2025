@@ -6,21 +6,19 @@ use App\Repository\UserRepository;
 use App\Entity\User;
 use PDOException;
 
-if (strpos($requestUri, 'backend/login') !== false && $_SERVER["REQUEST_METHOD"] == "POST") {
+// --- Logique de connexion (Login) ---
+$messageType = 'danger';
+$messageTitle = 'Erreur de connexion :';
+$messageContent = ['Une erreur inattendue est survenue. Veuillez réessayer.'];
+$redirectPath = $base_url . '/';
 
-    // --- Logique de connexion (Login) ---
-    $messageType = 'danger';
-    $messageTitle = 'Erreur de connexion :';
-    $messageContent = ['Une erreur inattendue est survenue. Veuillez réessayer.'];
-    $redirectPath = $base_url . '/';
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars(trim($_POST['email'] ?? ''));
     $password = $_POST['password'] ?? '';
 
     if (empty($email) || empty($password)) {
-        $messageContent = ["Veuillez entrer votre adresse email et votre mot de passe."];
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $messageContent = ["L'adresse email n'est pas valide."];
+        $messageContent = ["Veuillez saisir votre email et votre mot de passe."];
     } else {
         $userRepository = new UserRepository();
 
@@ -33,14 +31,20 @@ if (strpos($requestUri, 'backend/login') !== false && $_SERVER["REQUEST_METHOD"]
                 $_SESSION['user_pseudo'] = $user->getPseudo();
                 $_SESSION['user_email'] = $user->getEmail();
                 $_SESSION['user_role_id'] = $user->getRole();
-                $_SESSION['user_roles'] = $user->getRoles();
+                $_SESSION['user_firstname'] = $user->getFirstName();
+                $_SESSION['user_lastname'] = $user->getLastName();
+                $_SESSION['user_phone'] = $user->getPhone();
+                $_SESSION['user_credits'] = $user->getCredits();
+                $_SESSION['user_profile_picture'] = $user->getProfilePicture();
+                $_SESSION['user_rating'] = $user->getRating();
+                $_SESSION['user_role_name'] = User::ROLE_NAMES[$user->getRole()] ?? 'Refusé';
+
 
                 $messageType = 'success';
                 $messageTitle = 'Connexion réussie !';
                 $messageContent = ["Bienvenue, " . $user->getPseudo() . " !"];
 
-                $userRoleId = $_SESSION['user_role_id'];
-
+                $userRoleId = $user->getRole(); 
                 if ($userRoleId == 1) {
                     $redirectPath = $base_url . '/dashboard';
                 } elseif ($userRoleId == 2) {
@@ -52,14 +56,13 @@ if (strpos($requestUri, 'backend/login') !== false && $_SERVER["REQUEST_METHOD"]
                 }
 
             } else {
+                $_SESSION['logged_in'] = false;
                 $messageContent = ["Adresse email ou mot de passe incorrect."];
             }
         } catch (PDOException $e) {
-            error_log("Login PDO Error: " . $e->getMessage());
-            $messageContent = ["Une erreur est survenue lors de la connexion. Veuillez réessayer plus tard."];
+            $messageContent = ["Une erreur est survenue lors de la connexion. Veuillez réessayer plus tard. Détails (pour le développement) : " . $e->getMessage()];
         } catch (\Exception $e) {
-            error_log("Login General Error: " . $e->getMessage());
-            $messageContent = ["Une erreur inattendue est survenue. Veuillez réessayer."];
+            $messageContent = ["Une erreur inattendue est survenue. Détails (pour le développement) : " . $e->getMessage()];
         }
     }
 
@@ -73,7 +76,6 @@ if (strpos($requestUri, 'backend/login') !== false && $_SERVER["REQUEST_METHOD"]
 
 } elseif ($requestUri === '') {
 
-    
     // --- Logique de déconnexion (Logout) ---
 
     $_SESSION = array();
@@ -92,6 +94,7 @@ if (strpos($requestUri, 'backend/login') !== false && $_SERVER["REQUEST_METHOD"]
     session_destroy();
     header('Location: ' . $base_url . '/');
     exit();
+
 } else {
     http_response_code(400);
     echo "Action non reconnue ou méthode non autorisée.";
