@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Repository\UserRepository;
 use App\Validation\PasswordValid;
 use PDOException;
+use App\Entity\User;
 
 $messageType = 'info';
 $messageTitle = '';
@@ -56,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 $initialCredits = 20;
                 $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+                $profilePicture = 'default_profile.png';
 
                 $registrationSuccess = $userRepository->registerUser(
                     $pseudo,
@@ -64,7 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $email,
                     $hashedPassword,
                     $initialCredits,
-                    $profilePicture
+                    $profilePicture,
+                    User::ROLE_UTILISATEUR_ID
                 );
 
                 if ($registrationSuccess) {
@@ -94,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 } else {
     $messageTitle = 'Information :';
-    $messageContent[] = "Ce fichier est destiné au traitement du formulaire d'inscription. Veuillez soumettre le formulaire via la page d'inscription.";
+    $messageContent[] = "Veuillez remplir le formulaire pour vous inscrire.";
 }
 
 $_SESSION['form_message_type'] = $messageType;

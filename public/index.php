@@ -1,8 +1,9 @@
 <?php
-// public/index.php - Le Front Controller / Routeur
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-session_start(); // Démarre la session pour toute l'application
+
+ob_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Inclure l'autoloader de Composer au tout début
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -34,10 +35,13 @@ $routes = [
     'admin' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/adminpage.php'],
     'contact_reponse' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/contactanswer.php'],
     'inscription_reussie' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/signinsuccess.php'],
+    'dashboard' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/userdashboard.php'],
     // Routes des contrôleurs (pour les traitements backend)
     'backend/recherche' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/RechercheController.php'],
     'backend/register' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/RegisterController.php'],
     'backend/contact_process' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/ContactController.php'],
+    'backend/login' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/ConnexionController.php'],
+
 ];
 
 
@@ -46,7 +50,7 @@ $matchedRoute = null;
 if (array_key_exists($requestUri, $routes)) {
     $matchedRoute = $routes[$requestUri];
 } else if ($requestUri === 'index.php') {
-    $matchedRoute = $routes(' ');
+    $matchedRoute = $routes[''];
 }
 
 if ($matchedRoute && $matchedRoute['type'] === 'controller') {

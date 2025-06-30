@@ -4,6 +4,17 @@ namespace App\Entity;
 
 class User
 {
+
+    const ROLE_UTILISATEUR_ID = 1;
+    const ROLE_EMPLOYE_ID = 2;
+    const ROLE_ADMINISTRATEUR_ID = 3;
+
+    const ROLE_NAMES = [
+        self::ROLE_UTILISATEUR_ID => 'utilisateur',
+        self::ROLE_EMPLOYE_ID => 'employé',
+        self::ROLE_ADMINISTRATEUR_ID => 'administrateur',
+    ];
+
     private ?int $id = null;
     private string $pseudo;
     private string $firstName;
@@ -14,6 +25,7 @@ class User
     private int $credits = 0;
     private string $profilePicture = 'default_profile.png';
     private int $rating = 0;
+    private int $role;
 
 
     public function __construct(array $data = [])
@@ -47,6 +59,12 @@ class User
 
         if (isset($data['rating']))
             $this->setRating($data['rating']);
+
+        if (isset($data['role']) && is_numeric($data['role'])) {
+            $this->setRole((int)$data['role']);
+        } else {
+            $this->setRole(self::ROLE_UTILISATEUR_ID);
+        }
     }
 
     // --- Getters ---
@@ -98,6 +116,25 @@ class User
     public function getRating(): int
     {
         return $this->rating;
+    }
+
+    public function getRole(): int 
+    { 
+        return $this->role; 
+    }
+
+    public function getRoles(): array
+    {
+        $roles = [];
+        $roles[] = self::ROLE_NAMES[self::ROLE_UTILISATEUR_ID];
+
+        if ($this->role >= self::ROLE_EMPLOYE_ID) {
+            $roles[] = self::ROLE_NAMES[self::ROLE_EMPLOYE_ID];
+        }
+        if ($this->role >= self::ROLE_ADMINISTRATEUR_ID) {
+            $roles[] = self::ROLE_NAMES[self::ROLE_ADMINISTRATEUR_ID];
+        }
+        return array_unique($roles);
     }
 
 
@@ -152,4 +189,27 @@ class User
         $this->rating = $rating;
     }
 
+    public function setRole(int $role): self
+    {
+        if (!array_key_exists($role, self::ROLE_NAMES)) {
+            throw new \InvalidArgumentException("ID de rôle '$role' non valide.");
+        }
+        $this->role = $role;
+        return $this;
+    }
+
+    public function isUtilisateur(): bool
+    {
+        return $this->role === self::ROLE_UTILISATEUR_ID;
+    }
+
+    public function isEmploye(): bool
+    {
+        return $this->role >= self::ROLE_EMPLOYE_ID;
+    }
+
+    public function isAdministrateur(): bool
+    {
+        return $this->role === self::ROLE_ADMINISTRATEUR_ID;
+    }
 }
