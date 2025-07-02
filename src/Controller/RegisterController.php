@@ -67,7 +67,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $hashedPassword,
                     $initialCredits,
                     $profilePicture,
-                    User::ROLE_UTILISATEUR_ID
+                    User::ROLE_UTILISATEUR_ID,
+                    false,
+                    true,
+                    false
                 );
 
                 if ($registrationSuccess) {

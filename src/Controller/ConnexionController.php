@@ -5,24 +5,31 @@ namespace App\Controller;
 use App\Repository\UserRepository;
 use App\Entity\User;
 use PDOException;
+use Exception;
 
-// --- Logique de connexion (Login) ---
-$messageType = 'danger';
-$messageTitle = 'Erreur de connexion :';
-$messageContent = ['Une erreur inattendue est survenue. Veuillez réessayer.'];
-$redirectPath = $base_url . '/';
+if (!isset($base_url)) {
+    header('Location: /error_fatal.php');
+    exit();
+}
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars(trim($_POST['email'] ?? ''));
     $password = $_POST['password'] ?? '';
 
+    $messageType = 'danger';
+    $messageTitle = 'Erreur de connexion :';
+    $messageContent = ['Une erreur inattendue est survenue. Veuillez réessayer.'];
+    $redirectPath = $base_url . '/login';
+
     if (empty($email) || empty($password)) {
         $messageContent = ["Veuillez saisir votre email et votre mot de passe."];
     } else {
-        $userRepository = new UserRepository();
-
         try {
+            $userRepository = new UserRepository();
             $user = $userRepository->getUserByEmail($email);
 
             if ($user && password_verify($password, $user->getPassword())) {
@@ -37,32 +44,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['user_credits'] = $user->getCredits();
                 $_SESSION['user_profile_picture'] = $user->getProfilePicture();
                 $_SESSION['user_rating'] = $user->getRating();
-                $_SESSION['user_role_name'] = User::ROLE_NAMES[$user->getRole()] ?? 'Refusé';
-
+                $_SESSION['user_role_name'] = User::ROLE_NAMES[$user->getRole()] ?? 'Inconnu';
+                $_SESSION['user_is_driver'] = $user->getIsDriver();
+                $_SESSION['user_is_passenger'] = $user->getIsPassenger();
 
                 $messageType = 'success';
                 $messageTitle = 'Connexion réussie !';
                 $messageContent = ["Bienvenue, " . $user->getPseudo() . " !"];
 
-                $userRoleId = $user->getRole(); 
-                if ($userRoleId == 1) {
-                    $redirectPath = $base_url . '/dashboard';
-                } elseif ($userRoleId == 2) {
-                    $redirectPath = $base_url . '/employedashboard';
-                } elseif ($userRoleId == 3) {
+                if ($user->isAdministrateur()) {
                     $redirectPath = $base_url . '/admindashboard';
+                } elseif ($user->isEmploye()) {
+                    $redirectPath = $base_url . '/employedashboard';
+                } elseif ($user->isUtilisateur()) {
+                    $redirectPath = $base_url . '/dashboard';
                 } else {
                     $redirectPath = $base_url . '/dashboard';
                 }
-
             } else {
                 $_SESSION['logged_in'] = false;
                 $messageContent = ["Adresse email ou mot de passe incorrect."];
             }
         } catch (PDOException $e) {
-            $messageContent = ["Une erreur est survenue lors de la connexion. Veuillez réessayer plus tard. Détails (pour le développement) : " . $e->getMessage()];
-        } catch (\Exception $e) {
-            $messageContent = ["Une erreur inattendue est survenue. Détails (pour le développement) : " . $e->getMessage()];
+            error_log("Erreur PDO lors de la connexion : " . $e->getMessage());
+            $messageContent = ["Une erreur est survenue lors de la connexion. Veuillez réessayer plus tard."];
+        } catch (Exception $e) {
+            error_log("Erreur inattendue lors de la connexion : " . $e->getMessage());
+            $messageContent = ["Une erreur inattendue est survenue. Veuillez réessayer plus tard."];
         }
     }
 
@@ -70,13 +78,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['login_message_title'] = $messageTitle;
     $_SESSION['login_message_content'] = $messageContent;
 
-
     header('Location: ' . $redirectPath);
     exit();
-
-} elseif ($requestUri === '') {
-
-    // --- Logique de déconnexion (Logout) ---
+} elseif (isset($requestUri) && $requestUri === 'logout') {
 
     $_SESSION = array();
     if (ini_get("session.use_cookies")) {
@@ -92,9 +96,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         );
     }
     session_destroy();
+
     header('Location: ' . $base_url . '/');
     exit();
-
 } else {
     http_response_code(400);
     echo "Action non reconnue ou méthode non autorisée.";

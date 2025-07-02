@@ -1,12 +1,11 @@
-INSERT INTO users (pseudo, first_name, last_name, email, phone, password, credits, profile_picture, rating, role) VALUES
-('JeanDupond', 'Jean', 'Dupond', 'jean.dupond@example.com', '0612345678', '$2y$10$MAY7AO3RmXVVCKzT3vtkQuf7TUAUz.iwzlx0YJ5AsKjbX0GTtYpn2', 5, 'default_profile.png', 4, 1),
-('MarieCurie', 'Marie', 'Curie', 'marie.curie@example.com', '0789012345', '$2y$10$MAY7AO3RmXVVCKzT3vtkQuf7TUAUz.iwzlx0YJ5AsKjbX0GTtYpn2', 12, 'profile_marie.png', 5, 1),
-('PaulVerte', 'Paul', 'Verte', 'paul.verte@example.com', '0654321098', '$2y$10$MAY7AO3RmXVVCKzT3vtkQuf7TUAUz.iwzlx0YJ5AsKjbX0GTtYpn2', 8, 'profile_paul.png', 3, 1),
-('SophieLambda', 'Sophie', 'Lambda', 'sophie.lambda@example.com', '0600000001', '$2y$10$MAY7AO3RmXVVCKzT3vtkQuf7TUAUz.iwzlx0YJ5AsKjbX0GTtYpn2', 3, 'default_profile.png', 0, 1),
-('PierrePassager', 'Pierre', 'Passager', 'pierre.passager@example.com', '0600000002', '$2y$10$MAY7AO3RmXVVCKzT3vtkQuf7TUAUz.iwzlx0YJ5AsKjbX0GTtYpn2', 2, 'default_profile.png', 0, 1),
-('AdminUser', 'Admin', 'Site', 'admin@example.com', '078901234', '$2y$10$7JTONpOrDm35EKhJKkDJJ.4NoQz18JJtWsxwwgRrfjY7rKKHJOog2', 9, 'default_profile.png', 5, 3),
-('EmployeeUser', 'Employe', 'Support', 'employee@example.com', '0689012345', '$2y$10$9iuTqoU/0Pjb96gbMM7dOuv5HfUtXfymLy4NiWYTs1mA/txnzrRXq', 5, 'default_profile.png', 4, 2);
-
+INSERT INTO users (pseudo, first_name, last_name, email, phone, password, credits, profile_picture, rating, role, is_driver, is_passenger, can_be_both) VALUES
+('JeanDupond', 'Jean', 'Dupond', 'jean.dupond@example.com', '0612345678', '$2y$10$MAY7AO3RmXVVCKzT3vtkQuf7TUAUz.iwzlx0YJ5AsKjbX0GTtYpn2', 5, 'default_profile.png', 4, 1, 1, 1),
+('MarieCurie', 'Marie', 'Curie', 'marie.curie@example.com', '0789012345', '$2y$10$MAY7AO3RmXVVCKzT3vtkQuf7TUAUz.iwzlx0YJ5AsKjbX0GTtYpn2', 12, 'profile_marie.png', 5, 1, 0, 1),
+('PaulVerte', 'Paul', 'Verte', 'paul.verte@example.com', '0654321098', '$2y$10$MAY7AO3RmXVVCKzT3vtkQuf7TUAUz.iwzlx0YJ5AsKjbX0GTtYpn2', 8, 'profile_paul.png', 3, 1, 1, 1),
+('SophieLambda', 'Sophie', 'Lambda', 'sophie.lambda@example.com', '0600000001', '$2y$10$MAY7AO3RmXVVCKzT3vtkQuf7TUAUz.iwzlx0YJ5AsKjbX0GTtYpn2', 3, 'default_profile.png', 0, 1, 0, 1),
+('PierrePassager', 'Pierre', 'Passager', 'pierre.passager@example.com', '0600000002', '$2y$10$MAY7AO3RmXVVCKzT3vtkQuf7TUAUz.iwzlx0YJ5AsKjbX0GTtYpn2', 2, 'default_profile.png', 0, 1, 0, 1),
+('AdminUser', 'Admin', 'Site', 'admin@example.com', '078901234', '$2y$10$7JTONpOrDm35EKhJKkDJJ.4NoQz18JJtWsxwwgRrfjY7rKKHJOog2', 9, 'default_profile.png', 5, 3, 0, 1),
+('EmployeeUser', 'Employe', 'Support', 'employee@example.com', '0689012345', '$2y$10$9iuTqoU/0Pjb96gbMM7dOuv5HfUtXfymLy4NiWYTs1mA/txnzrRXq', 5, 'default_profile.png', 4, 2, 0, 1);
 
 INSERT INTO vehicles (user_id, brand, model, energy_type, plate_number, first_registration_date, color) VALUES
 (1, 'Renault', 'Clio V', 'Essence', 'AB-123-CD', '2019-03-15', 'Bleu'),

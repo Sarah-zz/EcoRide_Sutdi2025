@@ -11,7 +11,9 @@ CREATE TABLE `users` (
     credits int DEFAULT '0',
     profile_picture varchar(255) DEFAULT 'default_profile.png',
     rating int DEFAULT '0',
-    role INT DEFAULT 1 NOT NULL -- 1=utilisateur, 2=employé, 3=admin
+    role INT DEFAULT 1 NOT NULL, -- 1=utilisateur, 2=employé, 3=admin
+    is_driver BOOLEAN DEFAULT FALSE,
+    is_passenger BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE `trajets` (

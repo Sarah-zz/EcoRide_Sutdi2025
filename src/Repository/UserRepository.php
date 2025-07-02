@@ -28,8 +28,8 @@ class UserRepository
     ): bool {
         try {
             $stmt = $this->pdo->prepare("
-                INSERT INTO users (pseudo, first_name, last_name, email, password, credits, profile_picture, role)
-                VALUES (:pseudo, :first_name, :last_name, :email, :password, :credits, :profile_picture, :role)
+                INSERT INTO users (pseudo, first_name, last_name, email, password, credits, profile_picture, role, is_driver, is_passenger)
+                VALUES (:pseudo, :first_name, :last_name, :email, :password, :credits, :profile_picture, :role, :isDriver, :isPassenger)
             ");
 
             $stmt->bindParam(':pseudo', $pseudo);
@@ -40,6 +40,8 @@ class UserRepository
             $stmt->bindParam(':credits', $credits);
             $stmt->bindParam(':profile_picture', $profilePicture);
             $stmt->bindParam(':role', $roleId, PDO::PARAM_INT);
+            $stmt->bindParam(':isDriver', $isDriver, PDO::PARAM_BOOL);
+            $stmt->bindParam(':isPassenger', $isPassenger, PDO::PARAM_BOOL);
 
             return $stmt->execute();
         } catch (PDOException $e) {
@@ -60,7 +62,9 @@ class UserRepository
 public function getUserById(int $id): ?User
     {
         try {
-            $stmt = $this->pdo->prepare("SELECT id, pseudo, first_name, last_name, email, phone, password, credits, profile_picture, rating, role FROM users WHERE id = :id");
+            $stmt = $this->pdo->prepare(
+                "SELECT id, pseudo, first_name, last_name, email, phone, password, credits, profile_picture, rating, role, is_driver, is_passenger
+                FROM users WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
             $userData = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -77,7 +81,9 @@ public function getUserById(int $id): ?User
     public function getUserByEmail(string $email): ?User
     {
         try {
-            $stmt = $this->pdo->prepare("SELECT id, pseudo, first_name, last_name, email, phone, password, credits, profile_picture, rating, role FROM users WHERE email = :email");
+            $stmt = $this->pdo->prepare(
+                "SELECT id, pseudo, first_name, last_name, email, phone, password, credits, profile_picture, rating, role, is_driver, is_passenger
+                FROM users WHERE email = :email");
             $stmt->bindParam(':email', $email);
             $stmt->execute();
             $userData = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -105,7 +111,9 @@ public function getUserById(int $id): ?User
                     credits = :credits,
                     profile_picture = :profile_picture,
                     rating = :rating,
-                    role = :role
+                    role = :role,
+                    is_driver = :isDriver,
+                    is_passenger = :isPassenger
                 WHERE id = :id
             ");
 
@@ -122,6 +130,8 @@ public function getUserById(int $id): ?User
             $stmt->bindParam(':profile_picture', $user->getProfilePicture());
             $stmt->bindParam(':rating', $user->getRating(), PDO::PARAM_INT);
             $stmt->bindParam(':role', $user->getRole(), PDO::PARAM_INT);
+            $stmt->bindParam(':isDriver', $user->getIsDriver(), PDO::PARAM_BOOL);
+            $stmt->bindParam(':isPassenger', $user->getIsPassenger(), PDO::PARAM_BOOL);
 
             return $stmt->execute();
 

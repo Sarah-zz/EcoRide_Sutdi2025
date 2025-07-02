@@ -26,7 +26,8 @@ class User
     private string $profilePicture = 'default_profile.png';
     private int $rating = 0;
     private int $role;
-
+    private bool $isDriver = false;
+    private bool $isPassenger = true;
 
     public function __construct(array $data = [])
     {
@@ -64,6 +65,14 @@ class User
             $this->setRole((int)$data['role']);
         } else {
             $this->setRole(self::ROLE_UTILISATEUR_ID);
+        }
+
+        if (isset($data['is_driver'])) {
+            $this->setIsDriver((bool)$data['is_driver']);
+        }
+
+        if (isset($data['is_passenger'])) {
+            $this->setIsPassenger((bool)$data['is_passenger']);
         }
     }
 
@@ -137,6 +146,15 @@ class User
         return array_unique($roles);
     }
 
+    public function getIsDriver(): bool
+    {
+        return $this->isDriver;
+    }
+
+    public function getIsPassenger(): bool
+    {
+        return $this->isPassenger;
+    }
 
     // --- Setters ---
     public function setId(int $id): void
@@ -211,5 +229,15 @@ class User
     public function isAdministrateur(): bool
     {
         return $this->role === self::ROLE_ADMINISTRATEUR_ID;
+    }
+
+    public function setIsDriver(bool $isDriver): void
+    {
+        $this->isDriver = $isDriver;
+    }
+
+    public function setIsPassenger(bool $isPassenger): void
+    {
+        $this->isPassenger = $isPassenger;
     }
 }

@@ -32,7 +32,7 @@ $routes = [
     'signin' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/signin.php'],
     'login' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/login.php'],
     'contact' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/contact.php'],
-    'admin' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/adminpage.php'],
+    'admindashboard' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/adminpage.php'],
     'contact_reponse' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/contactanswer.php'],
     'inscription_reussie' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/signinsuccess.php'],
     'dashboard' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/userdashboard.php'],
@@ -41,6 +41,9 @@ $routes = [
     'backend/register' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/RegisterController.php'],
     'backend/contact_process' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/ContactController.php'],
     'backend/login' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/ConnexionController.php'],
+    'backend/driver/preferences' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/DriverController.php'],
+    'backend/save_user_roles' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/UserRolesController.php'],
+    'logout' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/ConnexionController.php'],
 
 ];
 
@@ -65,6 +68,7 @@ if ($matchedRoute && $matchedRoute['type'] === 'controller') {
 }
 
 $viewToInclude = __DIR__ . '/../src/View/404.php';
+$data = [];
 
 if ($matchedRoute && $matchedRoute['type'] === 'view') {
     $viewToInclude = $matchedRoute['cible'];
