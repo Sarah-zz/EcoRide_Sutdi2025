@@ -57,9 +57,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } elseif ($user->isEmploye()) {
                     $redirectPath = $base_url . '/employedashboard';
                 } elseif ($user->isUtilisateur()) {
-                    $redirectPath = $base_url . '/dashboard';
+                    $redirectPath = $base_url . '/userdashboard';
                 } else {
-                    $redirectPath = $base_url . '/dashboard';
+                    echo 'try again';
                 }
             } else {
                 $_SESSION['logged_in'] = false;

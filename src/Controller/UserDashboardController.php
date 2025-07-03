@@ -79,3 +79,29 @@ try {
     header('Location: ' . $base_url . '/login');
     exit();
 }
+
+// --- REMPLACEZ LA LIGNE 83 ICI ---
+$pathToView = __DIR__ . '/../src/View/userdashboard.php'; // C'est le chemin actuel que vous utilisez
+
+echo "<pre>DEBUG: Le contrôleur cherche la vue à ce chemin : " . $pathToView . "</pre>";
+
+if (!file_exists($pathToView)) {
+    echo "<pre>ERREUR CRITIQUE: Le fichier de vue N'EXISTE PAS à l'emplacement indiqué !</pre>";
+    // Ajoutez ici des infos pour vous aider à déboguer le chemin
+    echo "<pre>DEBUG: __DIR__ (du contrôleur) est : " . __DIR__ . "</pre>";
+    echo "<pre>DEBUG: Contenu de src/ (liste des dossiers) :";
+    exec('ls -l ' . __DIR__ . '/../src/', $output); // Liste les contenus de src/
+    print_r($output);
+    $output = [];
+    echo "</pre>";
+
+    echo "<pre>DEBUG: Contenu du dossier View/ (ou celui que vous utilisez) :";
+    exec('ls -l ' . __DIR__ . '/../src/View/', $output); // Liste les contenus de src/View/
+    print_r($output);
+    echo "</pre>";
+
+    die("Arrêt du script : Impossible de trouver la vue userdashboard.php."); // Arrête l'exécution
+}
+
+require_once $pathToView; // Exécute l'inclusion si le fichier est trouvé
+exit();

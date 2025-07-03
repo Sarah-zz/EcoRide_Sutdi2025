@@ -35,7 +35,7 @@ $routes = [
     'admindashboard' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/adminpage.php'],
     'contact_reponse' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/contactanswer.php'],
     'inscription_reussie' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/signinsuccess.php'],
-    'dashboard' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/userdashboard.php'],
+    'userdashboard' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/userdashboard.php'],
     // Routes des contrôleurs (pour les traitements backend)
     'backend/recherche' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/RechercheController.php'],
     'backend/register' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/RegisterController.php'],
@@ -44,6 +44,7 @@ $routes = [
     'backend/driver/preferences' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/DriverController.php'],
     'backend/save_user_roles' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/UserRolesController.php'],
     'logout' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/ConnexionController.php'],
+    'dashboard' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/UserDashboardController.php']
 
 ];
 
