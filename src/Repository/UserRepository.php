@@ -24,7 +24,9 @@ class UserRepository
         string $hashedPassword,
         int $credits,
         string $profilePicture,
-        int $roleId = User::ROLE_UTILISATEUR_ID
+        int $roleId = User::ROLE_UTILISATEUR_ID,
+        bool $isDriver = false,
+        bool $isPassenger = true 
     ): bool {
         try {
             $stmt = $this->pdo->prepare("

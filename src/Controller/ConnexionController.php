@@ -59,7 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } elseif ($user->isUtilisateur()) {
                     $redirectPath = $base_url . '/userdashboard';
                 } else {
-                    echo 'try again';
+                    error_log("Rôle utilisateur inconnu pour l'ID " . $user->getId());
+                    $messageContent = ["Votre rôle n'est pas reconnu. Veuillez contacter l'administration."];
+                    $redirectPath = $base_url . '/login';
                 }
             } else {
                 $_SESSION['logged_in'] = false;
@@ -99,6 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     header('Location: ' . $base_url . '/');
     exit();
+
 } else {
     http_response_code(400);
     echo "Action non reconnue ou méthode non autorisée.";
