@@ -47,22 +47,16 @@
     <hr class="my-5">
 
     <form action="<?php echo htmlspecialchars($base_url); ?>/userdashboard" method="POST" class="mb-5">
-        <h3 class="h5 mb-4">Configurez vos rôles :</h3>
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="isPassenger" name="isPassenger" value="1" checked disabled>
-            <label class="form-check-label" for="isPassenger">
-                Je suis un **Passager** (rôle par défaut)
-            </label>
-            <input type="hidden" name="isPassenger" value="1">
-        </div>
+        <h3 class="h5 mb-4">Je souhaite être conducteur :</h3>
+        <input type="hidden" name="isPassenger" value="1">
         <div class="form-check mb-4">
             <input class="form-check-input" type="checkbox" id="isDriver" name="isDriver" value="1" <?php echo $user->getIsDriver() ? 'checked' : ''; ?>>
             <label class="form-check-label" for="isDriver">
-                Je suis un **Chauffeur**
+                Je coche si je suis conducteur
             </label>
         </div>
         <input type="hidden" name="action" value="update_roles">
-        <button type="submit" class="btn btn-primary shadow-sm">Enregistrer mes rôles</button>
+        <button type="submit" class="btn btn-primary shadow-sm">Je valide</button>
     </form>
 
     <div id="driverPassengerOptions" class="mb-5">
@@ -78,7 +72,7 @@
                 <li class="mb-2"><a href="#" class="text-decoration-none">Mes demandes de réservation</a></li>
             </ul>
         <?php else: ?>
-            <p class="text-muted mb-4">Vous avez sélectionné **Passager**.</p>
+            <p class="text-muted mb-4">Vous êtes passager.</p>
             <ul class="list-unstyled">
                 <li class="mb-2"><a href="<?php echo htmlspecialchars($base_url); ?>/covoiturage" class="text-decoration-none">Rechercher un covoiturage</a></li>
                 <li class="mb-2"><a href="#" class="text-decoration-none">Mes réservations</a></li>

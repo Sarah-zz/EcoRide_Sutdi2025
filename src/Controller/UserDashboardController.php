@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Repository\UserRepository;
-use App\Entity\User;
 use PDOException;
 use Exception;
 
@@ -38,7 +37,7 @@ try {
         exit();
     }
 
-    // --- LOGIQUE DE TRAITEMENT DES RÔLES (PRÉCÉDEMMENT DANS USERROLESCONTROLLER) ---
+    // --- LOGIQUE DE TRAITEMENT DES RÔLES
     $roleUpdateMessages = [
         'type' => '',
         'title' => '',
@@ -62,7 +61,7 @@ try {
             $roleUpdateMessages['content'][] = 'Impossible de mettre à jour vos rôles.';
         }
     }
-    // --- FIN TRAITEMENT DES RÔLES ---
+    // --- FIN TRAITEMENT DES RÔLES
 
 
     $data = [

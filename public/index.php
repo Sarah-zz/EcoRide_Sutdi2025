@@ -37,6 +37,7 @@ $routes = [
     'login' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/login.php'],
     'contact' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/contact.php'],
     'admindashboard' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/adminpage.php'],
+    'employedashboard' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/employepage.php'],
     'contact_reponse' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/contactanswer.php'],
     'inscription_reussie' => ['type' => 'view', 'cible' => __DIR__ . '/../src/View/signinsuccess.php'],
     'userdashboard' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/UserDashboardController.php', 'render_view' => __DIR__ . '/../src/View/userdashboard.php'],
