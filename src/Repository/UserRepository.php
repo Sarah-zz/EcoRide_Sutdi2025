@@ -26,7 +26,7 @@ class UserRepository
         string $profilePicture,
         int $roleId = User::ROLE_UTILISATEUR_ID,
         bool $isDriver = false,
-        bool $isPassenger = true 
+        bool $isPassenger = true
     ): bool {
         try {
             $stmt = $this->pdo->prepare("
@@ -61,7 +61,7 @@ class UserRepository
     }
 
 
-public function getUserById(int $id): ?User
+    public function getUserById(int $id): ?User
     {
         try {
             $stmt = $this->pdo->prepare(
@@ -120,20 +120,32 @@ public function getUserById(int $id): ?User
             ");
 
             $id = $user->getId();
+            $pseudo = $user->getPseudo();
+            $firstName = $user->getFirstName();
+            $lastName = $user->getLastName();
+            $email = $user->getEmail();
+            $phone = $user->getPhone();
+            $password = $user->getPassword();
+            $credits = $user->getCredits();
+            $profilePicture = $user->getProfilePicture();
+            $rating = $user->getRating();
+            $role = $user->getRole();
+            $isDriver = $user->getIsDriver();
+            $isPassenger = $user->getIsPassenger();
 
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->bindParam(':pseudo', $user->getPseudo());
-            $stmt->bindParam(':first_name', $user->getFirstName());
-            $stmt->bindParam(':last_name', $user->getLastName());
-            $stmt->bindParam(':email', $user->getEmail());
-            $stmt->bindParam(':phone', $user->getPhone());
-            $stmt->bindParam(':password', $user->getPassword());
-            $stmt->bindParam(':credits', $user->getCredits(), PDO::PARAM_INT);
-            $stmt->bindParam(':profile_picture', $user->getProfilePicture());
-            $stmt->bindParam(':rating', $user->getRating(), PDO::PARAM_INT);
-            $stmt->bindParam(':role', $user->getRole(), PDO::PARAM_INT);
-            $stmt->bindParam(':isDriver', $user->getIsDriver(), PDO::PARAM_BOOL);
-            $stmt->bindParam(':isPassenger', $user->getIsPassenger(), PDO::PARAM_BOOL);
+            $stmt->bindParam(':pseudo', $pseudo);
+            $stmt->bindParam(':first_name', $firstName);
+            $stmt->bindParam(':last_name', $lastName);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':phone', $phone);
+            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':credits', $credits, PDO::PARAM_INT);
+            $stmt->bindParam(':profile_picture', $profilePicture);
+            $stmt->bindParam(':rating', $rating, PDO::PARAM_INT);
+            $stmt->bindParam(':role', $role, PDO::PARAM_INT);
+            $stmt->bindParam(':isDriver', $isDriver, PDO::PARAM_BOOL);
+            $stmt->bindParam(':isPassenger', $isPassenger, PDO::PARAM_BOOL);
 
             return $stmt->execute();
 

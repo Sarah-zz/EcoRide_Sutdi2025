@@ -34,14 +34,6 @@
         <li><strong>Crédits :</strong> <span class="fw-bold text-primary"><?php echo htmlspecialchars($user->getCredits()); ?></span></li>
         <li><strong>Note :</strong> <span class="text-warning"><?php echo str_repeat('⭐', $user->getRating()); ?></span> (<?php echo htmlspecialchars($user->getRating()); ?>/5)</li>
         <li>
-            <strong>Rôle(s) :</strong>
-            <div class="mt-2">
-                <?php foreach ($user->getRoles() as $role): ?>
-                    <span class="badge bg-info text-dark"><?php echo htmlspecialchars(ucfirst($role)); ?></span>
-                <?php endforeach; ?>
-            </div>
-        </li>
-        <li>
             <strong>Statut :</strong>
             <span class="<?php echo $user->getIsDriver() ? 'text-success fw-bold' : 'text-muted'; ?>">
                 <?php echo $user->getIsDriver() ? 'Chauffeur' : ''; ?>
@@ -98,13 +90,6 @@
     <hr class="my-5">
 
     <div class="text-center">
-        <a href="<?php echo htmlspecialchars($base_url); ?>/logout" class="btn btn-danger">Déconnexion</a>
-    </div>
-
-    <hr class="my-5">
-
-    <div class="bg-light p-4 rounded mt-5">
-        <h2 class="h5 mb-3">Contenu complet de la session (Débogage) :</h2>
-        <pre class="bg-white p-3 rounded border overflow-auto" style="max-height: 200px;"><?php var_dump($_SESSION); ?></pre>
+        <a href="<?php echo htmlspecialchars($base_url); ?>/logout" class="btn btn-primary">Déconnexion</a>
     </div>
 </div>
