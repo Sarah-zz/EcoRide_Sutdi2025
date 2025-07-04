@@ -139,3 +139,10 @@ body {
     margin-top: 50px;
     margin-bottom: 50px;
 }
+
+/* Style pour la carte affichage de résultats */
+.result-card {
+    background: linear-gradient(to bottom, rgba(96, 125, 139, 0.55), rgba(132, 176, 129, 0.55));
+    padding: 20px;
+    max-width: 50vw
+}

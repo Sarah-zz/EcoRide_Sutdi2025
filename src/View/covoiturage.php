@@ -1,13 +1,9 @@
 <?php
-// src/View/covoiturage.php
 // Cette page affiche le formulaire de recherche de covoiturage.
-// Elle est incluse par public/index.php.
 
-// Définition du chemin d'action pour le formulaire de recherche
-// Le chemin est absolu depuis la racine du site, pointant vers le contrôleur de recherche.
-$formActionPath = '/EcoRide/backend/recherche'; // <--- IMPORTANT: Adaptez ce chemin
+$formActionPath = '/backend/recherche';
+$errorMessage = 'Une erreur est surevenue';
 
-// Réinitialise les messages d'erreur si la page est chargée directement via le routeur sans recherche préalable
 unset($_SESSION['error_message']);
 unset($_SESSION['recherche_results']);
 ?>
@@ -23,7 +19,11 @@ unset($_SESSION['recherche_results']);
         include __DIR__ . '/../Form/RechercheForm.php';
         ?>
 
-        <div class="text-center mt-5">
-            <a href="/EcoRide/" class="btn btn-primary btn-lg">Retour à l'accueil</a> </div>
     </section>
+</div>
+
+<div class="text-center mt-5">
+    <a href="/EcoRide/" class="btn btn-primary btn-lg">Retour à l'accueil</a>
+</div>
+</section>
 </div>

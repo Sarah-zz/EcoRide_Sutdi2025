@@ -1,0 +1,12 @@
+[{
+  "_id": {
+    "$oid": "6867b1f686fb2ed0e18e1946"
+  },
+  "userId": 1,
+  "chatPreference": "depends",
+  "customPreferences": [],
+  "luggageSpace": "medium",
+  "musicPreference": "radio",
+  "petAllowed": "no",
+  "smokingAllowed": "yes"
+}]

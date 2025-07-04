@@ -3,32 +3,26 @@
 
 namespace App\Controller;
 
-use App\Model\User;
+use App\Repository\UserRepository;
+use App\Validation\PasswordValid;
 use PDOException;
+use App\Entity\User;
 
 $messageType = 'info';
 $messageTitle = '';
 $messageContent = [];
+$redirectPath = $base_url . '/signin';
 
-// Fonction de validation du mot de passe
-function isPasswordSecure($password) {
-    if (strlen($password) < 8) return false;
-    if (!preg_match('/[A-Z]/', $password)) return false;
-    if (!preg_match('/[a-z]/', $password)) return false;
-    if (!preg_match('/[0-9]/', $password)) return false;
-    if (!preg_match('/[^a-zA-Z0-9]/', $password)) return false;
-    return true;
-}
 
+// Vérifie si la requête est une soumission de formulaire POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer et nettoyer les données du formulaire
-    $pseudo = htmlspecialchars($_POST['pseudo'] ?? '');
-    $firstName = htmlspecialchars($_POST['first_name'] ?? '');
-    $lastName = htmlspecialchars($_POST['last_name'] ?? '');
-    $email = htmlspecialchars($_POST['email'] ?? '');
+    $pseudo = htmlspecialchars(trim($_POST['pseudo'] ?? ''));
+    $firstName = htmlspecialchars(trim($_POST['first_name'] ?? ''));
+    $lastName = htmlspecialchars(trim($_POST['last_name'] ?? ''));
+    $email = htmlspecialchars(trim($_POST['email'] ?? ''));
     $password = $_POST['password'] ?? '';
     $confirmPassword = $_POST['confirm_password'] ?? '';
-    $profilePicture = htmlspecialchars($_POST['profile_picture'] ?? 'default_profile.png');
+    $profilePicture = htmlspecialchars(trim($_POST['profile_picture'] ?? 'default_profile.png'));
 
     if (empty($pseudo)) {
         $messageContent[] = "Le pseudo est requis.";
@@ -46,35 +40,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     if (empty($password)) {
         $messageContent[] = "Le mot de passe est requis.";
-    } elseif (!isPasswordSecure($password)) {
-        $messageContent[] = "Le mot de passe n'est pas sécurisé. Il doit contenir au moins 8 caractères, dont une majuscule, une minuscule, un chiffre et un caractère spécial.";
+    } elseif (!PasswordValid::isSecure($password)) {
+        $messageContent[] = "Le mot de passe n'est pas sécurisé. " . PasswordValid::getSecurityDescription();;
     }
     if ($password !== $confirmPassword) {
         $messageContent[] = "Les mots de passe ne correspondent pas.";
     }
 
     if (empty($messageContent)) {
-        $userModel = new User(); // Instancie le Modèle User (grâce au 'use' statement)
+        $userRepository = new UserRepository();
 
         try {
-            // Vérifier si l'email ou le pseudo existe déjà
-            if ($userModel->emailOrPseudoExists($email, $pseudo)) {
-                $messageType = 'danger';
-                $messageTitle = 'Erreur(s) d\'inscription :';
+            if ($userRepository->emailOrPseudoExists($email, $pseudo)) {
                 $messageContent[] = "Cet email ou pseudo est déjà utilisé. Veuillez en choisir un autre.";
+                $messageType = 'danger';
             } else {
                 $initialCredits = 20;
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+                $profilePicture = 'default_profile.png';
 
-                // Appelle la méthode du Modèle pour enregistrer l'utilisateur
-                $registrationSuccess = $userModel->registerUser(
+                $registrationSuccess = $userRepository->registerUser(
                     $pseudo,
                     $firstName,
                     $lastName,
                     $email,
                     $hashedPassword,
                     $initialCredits,
-                    $profilePicture
+                    $profilePicture,
+                    User::ROLE_UTILISATEUR_ID,
+                    false,
+                    true,
+                    false
                 );
 
                 if ($registrationSuccess) {
@@ -83,28 +79,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $messageContent[] = "Bienvenue, <strong>" . $pseudo . "</strong> !";
                     $messageContent[] = "Votre email : " . $email;
                     $messageContent[] = "Vous avez été crédité de <strong>" . $initialCredits . "</strong> points pour commencer.";
-                    $messageContent[] = "Votre photo de profil : " . $profilePicture;
                     $messageContent[] = "<hr><p class='mb-0'>Vous pouvez maintenant vous connecter à votre compte.</p>";
+                    $redirectPath = $base_url . '/inscription_reussie';
                 } else {
                     $messageType = 'danger';
-                    $messageTitle = 'Erreur(s) d\'inscription :';
                     $messageContent[] = "Une erreur inconnue est survenue lors de l'enregistrement de votre compte.";
                 }
             }
         } catch (PDOException $e) {
             $messageType = 'danger';
-            $messageTitle = 'Erreur(s) d\'inscription :';
-            $messageContent[] = "Une erreur est survenue lors de l'enregistrement de votre compte. Veuillez réessayer plus tard. (" . $e->getMessage() . ")";
+            $messageContent[] = "Une erreur est survenue lors de l'enregistrement de votre compte. Veuillez réessayer plus tard. Détails (pour le développement) : " . $e->getMessage();
+        } catch (\Exception $e) {
+            $messageType = 'danger';
+            $messageContent[] = "Une erreur inattendue est survenue lors du traitement de votre demande. Détails (pour le développement) : " . $e->getMessage();
         }
+    }
+
+    if (empty($messageTitle)) {
+        $messageTitle = ($messageType === 'danger') ? 'Erreur(s) d\'inscription :' : 'Information :';
     }
 } else {
     $messageTitle = 'Information :';
-    $messageContent[] = "Ce fichier est destiné au traitement du formulaire d'inscription. Accédez-y via le formulaire.";
+    $messageContent[] = "Veuillez remplir le formulaire pour vous inscrire.";
 }
 
-// Stocke les messages dans la session pour les afficher sur la page d'inscription
 $_SESSION['form_message_type'] = $messageType;
 $_SESSION['form_message_title'] = $messageTitle;
 $_SESSION['form_message_content'] = $messageContent;
 
+header('Location: ' . $redirectPath);
 exit();

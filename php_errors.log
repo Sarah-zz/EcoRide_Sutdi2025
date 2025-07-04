@@ -1,0 +1,174 @@
+[03-Jul-2025 10:43:39 UTC] PHP Notice:  Only variables should be passed by reference in /var/www/html/src/Repository/UserRepository.php on line 125
+[03-Jul-2025 10:43:39 UTC] PHP Notice:  Only variables should be passed by reference in /var/www/html/src/Repository/UserRepository.php on line 126
+[03-Jul-2025 10:43:39 UTC] PHP Notice:  Only variables should be passed by reference in /var/www/html/src/Repository/UserRepository.php on line 127
+[03-Jul-2025 10:43:39 UTC] PHP Notice:  Only variables should be passed by reference in /var/www/html/src/Repository/UserRepository.php on line 128
+[03-Jul-2025 10:43:39 UTC] PHP Notice:  Only variables should be passed by reference in /var/www/html/src/Repository/UserRepository.php on line 129
+[03-Jul-2025 10:43:39 UTC] PHP Notice:  Only variables should be passed by reference in /var/www/html/src/Repository/UserRepository.php on line 130
+[03-Jul-2025 10:43:39 UTC] PHP Notice:  Only variables should be passed by reference in /var/www/html/src/Repository/UserRepository.php on line 131
+[03-Jul-2025 10:43:39 UTC] PHP Notice:  Only variables should be passed by reference in /var/www/html/src/Repository/UserRepository.php on line 132
+[03-Jul-2025 10:43:39 UTC] PHP Notice:  Only variables should be passed by reference in /var/www/html/src/Repository/UserRepository.php on line 133
+[03-Jul-2025 10:43:39 UTC] PHP Notice:  Only variables should be passed by reference in /var/www/html/src/Repository/UserRepository.php on line 134
+[03-Jul-2025 10:43:39 UTC] PHP Notice:  Only variables should be passed by reference in /var/www/html/src/Repository/UserRepository.php on line 135
+[03-Jul-2025 10:43:39 UTC] PHP Notice:  Only variables should be passed by reference in /var/www/html/src/Repository/UserRepository.php on line 136
+[03-Jul-2025 20:02:24 UTC] PHP Fatal error:  Uncaught Error: Class "App\Repository\DriverPreferencesRepository" not found in /var/www/html/src/Controller/DriverController.php:43
+Stack trace:
+#0 /var/www/html/public/index.php(70): include()
+#1 {main}
+  thrown in /var/www/html/src/Controller/DriverController.php on line 43
+[03-Jul-2025 20:08:38 UTC] PHP Fatal error:  Uncaught Error: Class "App\Repository\DriverPreferencesRepository" not found in /var/www/html/src/Controller/DriverController.php:43
+Stack trace:
+#0 /var/www/html/public/index.php(70): include()
+#1 {main}
+  thrown in /var/www/html/src/Controller/DriverController.php on line 43
+[03-Jul-2025 20:08:47 UTC] PHP Fatal error:  Uncaught Error: Class "App\Repository\DriverPreferencesRepository" not found in /var/www/html/src/Controller/DriverController.php:43
+Stack trace:
+#0 /var/www/html/public/index.php(70): include()
+#1 {main}
+  thrown in /var/www/html/src/Controller/DriverController.php on line 43
+[03-Jul-2025 20:37:41 UTC] PHP Fatal error:  Uncaught Error: Class "App\Repository\DriverPreferencesRepository" not found in /var/www/html/src/Controller/DriverController.php:43
+Stack trace:
+#0 /var/www/html/public/index.php(70): include()
+#1 {main}
+  thrown in /var/www/html/src/Controller/DriverController.php on line 43
+[03-Jul-2025 20:38:35 UTC] PHP Warning:  Undefined variable $mongoHost in /var/www/html/public/index.php on line 23
+[03-Jul-2025 20:38:35 UTC] PHP Warning:  Undefined variable $mongoPort in /var/www/html/public/index.php on line 23
+[03-Jul-2025 20:38:35 UTC] PHP Fatal error:  Uncaught Error: Class "MongoDbConnection" not found in /var/www/html/public/index.php:26
+Stack trace:
+#0 {main}
+  thrown in /var/www/html/public/index.php on line 26
+[03-Jul-2025 20:40:37 UTC] PHP Fatal error:  Uncaught Error: Class "MongoDB\Client" not found in /var/www/html/src/Database/MongoDbConnection.php:16
+Stack trace:
+#0 /var/www/html/public/index.php(33): App\Database\MongoDbConnection::initialize('mongodb://root:...', 'ecoride_app_db')
+#1 {main}
+  thrown in /var/www/html/src/Database/MongoDbConnection.php on line 16
+[03-Jul-2025 20:41:22 UTC] PHP Fatal error:  Uncaught Error: Class "MongoDB\Client" not found in /var/www/html/src/Database/MongoDbConnection.php:16
+Stack trace:
+#0 /var/www/html/public/index.php(33): App\Database\MongoDbConnection::initialize('mongodb://root:...', 'ecoride_app_db')
+#1 {main}
+  thrown in /var/www/html/src/Database/MongoDbConnection.php on line 16
+[03-Jul-2025 20:41:27 UTC] PHP Fatal error:  Uncaught Error: Class "MongoDB\Client" not found in /var/www/html/src/Database/MongoDbConnection.php:16
+Stack trace:
+#0 /var/www/html/public/index.php(33): App\Database\MongoDbConnection::initialize('mongodb://root:...', 'ecoride_app_db')
+#1 {main}
+  thrown in /var/www/html/src/Database/MongoDbConnection.php on line 16
+[03-Jul-2025 20:41:31 UTC] PHP Fatal error:  Uncaught Error: Class "MongoDB\Client" not found in /var/www/html/src/Database/MongoDbConnection.php:16
+Stack trace:
+#0 /var/www/html/public/index.php(33): App\Database\MongoDbConnection::initialize('mongodb://root:...', 'ecoride_app_db')
+#1 {main}
+  thrown in /var/www/html/src/Database/MongoDbConnection.php on line 16
+[03-Jul-2025 20:41:34 UTC] PHP Fatal error:  Uncaught Error: Class "MongoDB\Client" not found in /var/www/html/src/Database/MongoDbConnection.php:16
+Stack trace:
+#0 /var/www/html/public/index.php(33): App\Database\MongoDbConnection::initialize('mongodb://root:...', 'ecoride_app_db')
+#1 {main}
+  thrown in /var/www/html/src/Database/MongoDbConnection.php on line 16
+[03-Jul-2025 20:52:43 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:52:43 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:52:45 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:52:45 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:52:54 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:52:54 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:52:54 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:52:54 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:52:54 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:52:54 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:53:03 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:53:03 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:53:03 UTC] PHP Fatal error:  Uncaught Error: Class "App\Repository\DriverPreferencesRepository" not found in /var/www/html/src/Controller/DriverController.php:43
+Stack trace:
+#0 /var/www/html/public/index.php(97): include()
+#1 {main}
+  thrown in /var/www/html/src/Controller/DriverController.php on line 43
+[03-Jul-2025 20:53:51 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:53:51 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:53:51 UTC] PHP Warning:  Undefined variable $driverPreferencesRepository in /var/www/html/src/Controller/DriverController.php on line 44
+[03-Jul-2025 20:53:51 UTC] PHP Fatal error:  Uncaught Error: Call to a member function findByUserId() on null in /var/www/html/src/Controller/DriverController.php:44
+Stack trace:
+#0 /var/www/html/public/index.php(97): include()
+#1 {main}
+  thrown in /var/www/html/src/Controller/DriverController.php on line 44
+[03-Jul-2025 20:54:33 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:54:33 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:54:49 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:54:49 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:54:57 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:54:57 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:54:57 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:54:57 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:55:08 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:55:08 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:55:08 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:55:08 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:55:08 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:55:08 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 20:55:11 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 20:55:11 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 21:05:13 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 21:05:13 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 21:05:17 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 21:05:17 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 21:05:24 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 21:05:24 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 21:05:25 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 21:05:25 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 21:05:25 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 21:05:25 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 21:05:32 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 21:05:32 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 21:06:21 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 21:06:21 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 21:06:33 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 21:06:33 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 21:06:33 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 21:06:33 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 21:06:41 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 21:06:41 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 21:06:48 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 21:06:48 UTC] index.php: MongoDB Connection initialized successfully.
+[03-Jul-2025 21:06:48 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[03-Jul-2025 21:06:48 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:04:06 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:04:06 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:04:07 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:04:07 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:16:41 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:16:41 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:16:51 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:16:51 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:17:11 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:17:11 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:17:12 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:17:12 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:17:12 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:17:12 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:19:14 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:19:14 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:19:14 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:19:14 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:20:19 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:20:19 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:20:19 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:20:19 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:20:26 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:20:26 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:20:26 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:20:26 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:20:29 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:20:29 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:20:48 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:20:48 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:26:45 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:26:45 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:27:10 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:27:10 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:27:32 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:27:32 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:42:17 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:42:17 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:43:11 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:43:11 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:50:30 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:50:30 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:50:50 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:50:50 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 10:50:51 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 10:50:51 UTC] index.php: MongoDB Connection initialized successfully.

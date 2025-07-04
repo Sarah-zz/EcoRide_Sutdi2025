@@ -57,16 +57,13 @@ $base_url = '/EcoRide';
                     <div class="row">
                         <div class="col-md-6">
                             <p class="h4">Crédits totaux gagnés par la plateforme : <strong class="text-success">XXXX crédits</strong></p>
-                            <div class="graph-placeholder">Graphique : Covoiturages par jour (Placeholder)</div>
+                            <div class="graph-placeholder">Graphique : Covoiturages par jour</div>
                         </div>
                         <div class="col-md-6">
                             <p class="h4">Nombre total de covoiturages : <strong class="text-info">YYYY covoiturages</strong></p>
-                            <div class="graph-placeholder">Graphique : Crédits gagnés par jour (Placeholder)</div>
+                            <div class="graph-placeholder">Graphique : Crédits gagnés par jour</div>
                         </div>
                     </div>
-                    <p class="text-muted text-center mt-3">
-                        (Les données des graphiques et les totaux seront dynamiques après la connexion à la base de données.)
-                    </p>
                 </div>
             </div>
         </div>
