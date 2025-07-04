@@ -62,7 +62,6 @@
     <div id="driverPassengerOptions" class="mb-5">
         <h4 class="h5 mb-4">Mes options :</h4>
         <?php if ($user->getIsDriver()): ?>
-            <p class="text-muted mb-4">Vous avez sélectionné **Chauffeur** et vous êtes également **Passager**.</p>
             <ul class="list-unstyled">
                 <li class="mb-2"><a href="<?php echo htmlspecialchars($base_url); ?>/backend/driver/preferences" class="text-decoration-none">Gérer mes préférences de conduite</a></li>
                 <li class="mb-2"><a href="#" class="text-decoration-none">Proposer un trajet</a></li>

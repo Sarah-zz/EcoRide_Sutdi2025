@@ -10,10 +10,12 @@
             "psr-4": {
             "App\\": "src/",
             "App\\Database\\": "src/Database/",
-            "App\\Repository\\": "src/Repository/"
+            "App\\Repository\\": "src/Repository/",
+            "App\\Form\\": "src/Form/"
             }
         },
     "require": {
-        "vlucas/phpdotenv": "^5.6"
+        "vlucas/phpdotenv": "^5.6",
+        "mongodb/mongodb": "^1.17.0"
     }
 }

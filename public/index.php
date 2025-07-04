@@ -15,6 +15,30 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
+
+
+use App\Database\MongoDbConnection;
+
+$mongoHost = $_ENV['MONGO_HOST'] ?? 'mongodb';
+$mongoPort = $_ENV['MONGO_PORT'] ?? '27017';
+$mongoDbName = $_ENV['MONGO_APP_DB'] ?? 'ecoride_db';
+
+$mongoUri = "mongodb://";
+if (!empty($_ENV['MONGO_USERNAME']) && !empty($_ENV['MONGO_PASSWORD'])) {
+    $mongoUri .= urlencode($_ENV['MONGO_USERNAME']) . ":" . urlencode($_ENV['MONGO_PASSWORD']) . "@";
+}
+$mongoUri .= "$mongoHost:$mongoPort";
+
+try {
+    MongoDbConnection::initialize($mongoUri, $mongoDbName);
+    error_log("index.php: MongoDB Connection initialized successfully.");
+} catch (Exception $e) {
+    error_log("index.php: Erreur critique lors de l'initialisation de MongoDB: " . $e->getMessage());
+    http_response_code(500);
+    echo "Une erreur interne est survenue. Veuillez réessayer plus tard.";
+    exit();
+}
+
 // --- Début de la logique du Routeur ---
 
 $basePath = 'EcoRide';
@@ -49,6 +73,9 @@ $routes = [
     'backend/driver/preferences' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/DriverController.php'],
     'logout' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/ConnexionController.php'],
     //'dashboard' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/UserDashboardController.php']
+
+    'backend/driver/preferences' => ['type' => 'controller', 'cible' => __DIR__ . '/../src/Controller/DriverController.php', 'render_view' => __DIR__ . '/../src/View/driverpreferences.php'],
+
 
 ];
 
