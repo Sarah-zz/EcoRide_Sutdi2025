@@ -1,21 +1,19 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-ini_set('log_errors', 1);
-ini_set('error_log', __DIR__ . '/../php_errors.log');
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('log_errors', 1);
+//ini_set('error_log', __DIR__ . '/../php_errors.log');
 
 ob_start();
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Inclure l'autoloader de Composer au tout début
+//autoloader de Composer au tout début
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
-
-
 
 use App\Database\MongoDbConnection;
 

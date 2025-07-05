@@ -172,3 +172,7 @@ Stack trace:
 [04-Jul-2025 10:50:50 UTC] index.php: MongoDB Connection initialized successfully.
 [04-Jul-2025 10:50:51 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
 [04-Jul-2025 10:50:51 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 12:23:21 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 12:23:21 UTC] index.php: MongoDB Connection initialized successfully.
+[04-Jul-2025 12:23:28 UTC] MongoDB: Connexion réussie à la base de données 'ecoride_app_db'.
+[04-Jul-2025 12:23:28 UTC] index.php: MongoDB Connection initialized successfully.
