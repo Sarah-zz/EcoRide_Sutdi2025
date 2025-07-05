@@ -28,7 +28,7 @@ MONGO_INITDB_ROOT_PASSWORD=rootpassword
 L'application n'est pas encore terminée mais tout a été pushé dans le main pour plus de clarté.
 
 ### Fichiers de création et d'intégration de données
-Les fichers sont présent sur le dépot git
+Les fichers sont présent sur le dépot git.
 Pour ma part : utilisation de phpmyadmin avec MySQL, et MongoDB via Mongo Compass
 
 
